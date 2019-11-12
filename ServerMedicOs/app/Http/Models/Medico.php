@@ -28,7 +28,7 @@ class Medico extends Model
         'telefono',
         'costoxconsulta',
         'rfc',
-        'contraseña',
+        'contrasena',
         'foto_perfil'
     ];
 }
