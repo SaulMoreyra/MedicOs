@@ -12,7 +12,7 @@ class Cita extends Model
     //llave primaria
     protected $primaryKey = 'id_cita';
     public $timestamps = false;
-
+    //nomenclatura status c,p,e
     //aqui los elementos a mostrarse en la tabla 
     protected $filltable = [
         'id_cita',

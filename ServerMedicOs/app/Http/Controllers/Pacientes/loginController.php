@@ -1,5 +1,5 @@
 <?php
-    namespace app\Http\Controllers\PW_controller;
+    namespace app\Http\Controllers\Pacientes;
     
     use Illuminate\Http\Request;
 
@@ -7,8 +7,27 @@
 
     use App\Models\PW\modeloFerreteria; //Direccion de la clase (modelo)
 
-    class ControladorFerreteria extends Controller
+    class loginController extends Controller
     {
+
+        public function registrar(Request $request){
+          $correo
+          $curp
+          $nombre
+          $primer_apellido
+          $segundo_apellido
+          $fecha_nacimiento
+          $direccion
+          $telefono
+          $contrasena
+
+        }
+
+        public function consultar(){
+
+
+        }
+
 
         public function insertar(request $request)
 		{

@@ -24,7 +24,7 @@ class Paciente extends Model
        'fecha_nacimiento',
        'direccion',
        'telefono',
-       'contraseña',
+       'contrasena',
        'foto_perfil'
    ];
 }
