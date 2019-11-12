@@ -1,4 +1,4 @@
-﻿
+﻿drop table horario, observaciones, medicamento, cita, medico, paciente
 set datestyle to sql,dmy;
 
 create table medico(
@@ -15,7 +15,7 @@ create table medico(
 	telefono text,
 	costoxconsulta double precision,
 	rfc text,
-	contraseña text,
+	contrasena text,
 	foto_perfil text
 );
 
@@ -36,7 +36,7 @@ create table paciente(
 	fecha_nacimiento date,
 	direccion text,
 	telefono text,
-	contraseña text,
+	contrasena text,
 	foto_perfil text
 );
 
