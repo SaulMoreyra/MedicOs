@@ -1,0 +1,6 @@
+El nombre de la base de datos es 
+"medicosdb"
+y el propietario es "postgres"
+
+Configura tu .env y favor de no subirlo :v
+(gitignore)
