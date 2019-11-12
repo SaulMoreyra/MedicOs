@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Models\Medico;
 use Illuminate\Database\QueryException;
 
-class Medico extends Controller{
+class MedicoController extends Controller{
     public function login(Request $req){
         $correo = $req->correo;
         $contrasena = $req->contrasena;
