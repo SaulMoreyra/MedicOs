@@ -23,7 +23,7 @@ class Medico extends Model
         'especialidad',
         'cedula',
         'procedencia',
-        'lalitud',
+        'latitud',
         'longitud',
         'telefono',
         'costoxconsulta',
