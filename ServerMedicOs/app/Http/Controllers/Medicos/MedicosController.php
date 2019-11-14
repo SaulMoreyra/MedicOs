@@ -147,19 +147,28 @@ class MedicosController extends Controller{
     }
 
     public function updateDias(Request $req){
-        return response()
-        ->json($req->mensaje);
-        /*
-        $dias = Horario::select('*')
+        
+        $diasbd = Horario::select('*')
         ->where('id_medico','=',$req->id_doctor);
-
-        if(sizeof($dias) == 7){
-            foreach($dias as $dia){
-                $dia->dia = 
+        $array = array('Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes');
+        $diasrq = $req->dias;
+        if(sizeof($diasbd) == 7){
+            foreach($diasbd as $dia){
+                $dia->dia = $diasrq->dia;
+                $dia->hora_ingreso = $diasrq->hora_ingreso;
+                $dia->hora_salida = $diasrq->hora_salida;
+                $dia->status = $diasrq->status;
             }
+            $diasbd->save();
         }else{
-
+            foreach($req->dias as $dia){
+                Horario::insert([
+                    'dia' => $dias->dia,
+                    'hora_ingreso' => $dias->hora_ingreso,
+                    'hora_salida' => $dias->hora_salida,
+                    'status' => $dias->status
+                ]);
+            }
         }
-        */
     }
 }
