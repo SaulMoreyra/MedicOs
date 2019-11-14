@@ -1,13 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Http\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Medicamento extends Model
 {
     //nombre de la tabla
-    protected $table = 'medicameto';
+    protected $table = 'medicamento';
 
     //llave primaria
     protected $primaryKey = null;
@@ -15,9 +15,10 @@ class Medicamento extends Model
 
     //aqui los elementos a mostrarse en la tabla 
     protected $filltable = [
-        'id_medico',
-        'dia',
-        'hora_ingreso',
-        'hora_saida'
+        'id_cita',
+        'medicamento',
+        'dosis',
+        'horarios_aplicacion',
+        'descripcion'
     ];
 }

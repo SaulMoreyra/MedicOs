@@ -1,13 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Medicos;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Models\Medico;
+use App\Http\Models\Cita;
+use App\Http\Models\Paciente;
+use App\Http\Models\Medicamento;
+use App\Http\Models\Horario;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\DB;
 
-class MedicoController extends Controller{
+class MedicosController extends Controller{
+
     public function login(Request $req){
         $correo = $req->correo;
         $contrasena = $req->contrasena;
@@ -33,18 +39,41 @@ class MedicoController extends Controller{
         }
     }
 
+    public function loginExtra(Request $req){
+        $correo = $req->correo;
+        $medico = Medico::select('*')
+        ->where('correo','=', $correo)
+        ->first();
+
+        if(is_null($medico)){
+            return Self::registro($req);
+        }elseif($correo == $medico->correo){
+            return response()->json([
+                'mensaje' => 'ok',
+                'medico' => $medico
+            ]);
+        }
+    }
+
     public function registro(Request $request){
         $status = '1';
         $mensaje = 'ok';
         try{
-            MCliente::insert([
+            Medico::insert([
                 'nombre'=>$request->nombre,
-                'apaterno'=>$request->apaterno,
-                'apmaterno'=>$request->apmaterno,
-                'direccion'=>$request->direccion,
+                'primer_apellido'=>$request->primer_apellido,
+                'segundo_apellido'=>$request->segundo_apellido,
+                'especialidad'=>$request->especialidad,
+                'cedula'=>$request->cedula,
+                'procedencia' => $request->procedencia,
+                'latitud'=>$request->latitud,
+                'longitud'=>$request->longitud,
                 'telefono'=>$request->telefono,
-                'correo' => $request->correo,
-                'contrasena'=>$request->contrasena
+                'costoxconsulta'=>$request->costoxconsulta,
+                'rfc'=>$request->rfc,
+                'contrasena'=>$request->contrasena,
+                'correo'=>$request->correo,
+                'foto_perfil'=>$request->foto_perfil
             ]);
         } catch(QueryException $ex){ 
             $status = '0';
@@ -58,7 +87,79 @@ class MedicoController extends Controller{
         ->json([
             'status' => $status,
             'mensaje' => $mensaje,
-            'cliente' => MCliente::select('*')->where('correo','=',$request->correo)->get()
+            'medico' => Medico::select('*')->where('correo','=',$request->correo)->get()
         ]);
+    }
+
+    public function editar(Request $request){
+        $status = '1';
+        $mensaje = 'Se ha editado correctamente';
+        try{
+            $medico = Medico::find($request->id_medico);
+            $medico->nombre = $request->nombre;
+            $medico->primer_apellido = $request->primer_apellido;
+            $medico->segundo_apellido = $request->segundo_apellido;
+            $medico->especialidad = $request->especialidad;
+            $medico->cedula = $request->cedula;
+            $medico->procedencia = $request->procedencia;
+            $medico->latitud = $request->latitud;
+            $medico->longitud = $request->longitud;
+            $medico->telefono = $request->telefono;
+            $medico->costoxconsulta = $request->costoxconsulta;
+            $medico->rfc = $request->rfc;
+            $medico->contrasena = $request->contrasena;
+            $medico->correo = $request->correo;
+            $medico->foto_perfil = $request->foto_perfil;
+            $medico->save();
+        } catch(QueryException $ex){ 
+            $status = '0';
+            $mensaje = $ex;
+            if($ex->errorInfo[0] == '23505'){
+                $mensaje = 'Se ha producido un errror';
+            }
+        }
+        
+        return response()
+        ->json([
+            'status' => $status,
+            'mensaje' => $mensaje,
+            'medico' => Medico::select('*')->where('id_medico','=',$request->id_medico)->get()
+        ]);
+    }
+
+    public function citasPedientes($id_doctor){
+        $citas = DB::select("select id_cita, c.id_paciente,
+        (nombre||' '||primer_apellido||' '||segundo_apellido) as nombre, 
+        telefono, correo, fecha, hora, latitud, longitud, tipo_cita
+        from cita as c inner join paciente as p on c.id_paciente = p.id_paciente
+        where id_cita = ? and status = 'p'",[$id_doctor]);  
+        return response()->json($citas);
+    }
+
+    public function historialCitas($id_paciente){
+        return response()
+        ->json(Cita::select('*')->where('id_paciente','=',$id_paciente)->get());
+    }
+
+    public function historialMedicamentos($id_cita){
+        return response()
+        ->json(Medicamento::select('*')->where('id_cita','=',$id_cita)->get());
+    }
+
+    public function updateDias(Request $req){
+        return response()
+        ->json($req->mensaje);
+        /*
+        $dias = Horario::select('*')
+        ->where('id_medico','=',$req->id_doctor);
+
+        if(sizeof($dias) == 7){
+            foreach($dias as $dia){
+                $dia->dia = 
+            }
+        }else{
+
+        }
+        */
     }
 }

@@ -23,7 +23,8 @@ create table horario(
 	id_medico int references medico(id_medico),
 	dia text,
 	hora_ingreso time,
-	hora_salida time
+	hora_salida time,
+	status boolean
 );
 
 create table paciente(
@@ -41,6 +42,7 @@ create table paciente(
 );
 
 create table observaciones(
+	id_observacion SERIAL primary key,
 	id_paciente int references paciente(id_paciente),
 	tipo_obs text,
 	nombre_obs text,
@@ -70,3 +72,39 @@ create table medicamento(
 	horario_aplicacion text,
 	descripcion text
 );
+
+INSERT INTO public.medico(
+            correo, nombre, primer_apellido, segundo_apellido, 
+            especialidad, cedula, procedencia, latitud, longitud, telefono, 
+            costoxconsulta, rfc, contrasena)
+    VALUES ('drone_cam@outlook.es', 'Saul', 'Aragon', 'Moreyra', 
+            'Pediatria', '12345DDKFD', 'ITO', 17.0848147, -96.7850286, '9511024242', 
+            800, 'FJFJKKD8383DDF', 'holasoy');
+
+INSERT INTO public.medico(
+            correo, nombre, primer_apellido, segundo_apellido, 
+            especialidad, cedula, procedencia, latitud, longitud, telefono, 
+            costoxconsulta, rfc, contrasena)
+    VALUES ('jose_rios@outlook.es', 'Jose', 'Rios', 'Jose', 
+            'Ginecologo', '12345DDKFD', 'ITO', 17.0848147, -96.7850286, '9511024242', 
+            800, 'FJFJKKD8383DDF', 'holasoy');
+
+INSERT INTO public.medico(
+            correo, nombre, primer_apellido, segundo_apellido, 
+            especialidad, cedula, procedencia, latitud, longitud, telefono, 
+            costoxconsulta, rfc, contrasena)
+    VALUES ('ignaciodll@outlook.es', 'Luz Deisy', 'Ignacio', 'Luis', 
+            'Pediatria', '12345DDKFD', 'ITO', 17.0848147, -96.7850286, '9511024242', 
+            800, 'FJFJKKD8383DDF', 'holasoy');
+INSERT INTO public.paciente(
+            correo, curp, nombre, primer_apellido, segundo_apellido, 
+            fecha_nacimiento, direccion, telefono, contrasena)
+    VALUES ('paciente1@hotmail.com','JAJAJAK678276789','Joselyn','Moreyra','Reyes', 
+            '07-06-2013', 'Yalalag #20', '5027344','holasoy');
+
+INSERT INTO public.paciente(
+            correo, curp, nombre, primer_apellido, segundo_apellido, 
+            fecha_nacimiento, direccion, telefono, contrasena)
+    VALUES ('paciente2@hotmail.com','JAJAJAK678276789','Joshua','Luis','Luis', 
+            '07-06-2013', 'Priv 7 #20', '5027344','holasoy');
+

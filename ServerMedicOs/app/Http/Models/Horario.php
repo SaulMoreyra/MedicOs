@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Http\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,6 +18,7 @@ class Horario extends Model
         'id_medico',
         'dia',
         'hora_ingreso',
-        'hora_saida'
+        'hora_saida',
+        'status'
     ];
 }
