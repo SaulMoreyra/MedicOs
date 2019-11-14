@@ -20,32 +20,41 @@
         public function registrar(Request $request){
             $status = '1';
             $mensaje = 'ok';
-            try{
-                Paciente::insert([
-                    'correo'=>$request->correo,
-                    'curp'=>$request->curp,
-                    'nombre'=>$request->nombre,
-                    'primer_apellido'=>$request->primer_apellido,
-                    'segundo_apellido'=>$request->segundo_apellido,
-                    'fecha_nacimiento' => $request->fecha_nacimiento,
-                    'direccion'=>$request->direccion,
-                    'telefono'=>$request->telefono,
-                    'contrasena'=>$request->contrasena,
-                    'foto_perfil'=>$request->foto_perfil
-                ]);
-            } catch(QueryException $ex){ 
-                $status = '0';
-                $mensaje = $ex;
-                if($ex->errorInfo[0] == '23505'){
-                    $mensaje = 'El correo ya ha sido registrado';
+            $pa= Paciente::select('*')->where('correo',$request->correo)->first();
+            if(is_null($pa)){
+                try{
+                    Paciente::insert([
+                        'correo'=>$request->correo,
+                        'curp'=>$request->curp,
+                        'nombre'=>$request->nombre,
+                        'primer_apellido'=>$request->primer_apellido,
+                        'segundo_apellido'=>$request->segundo_apellido,
+                        'fecha_nacimiento' => $request->fecha_nacimiento,
+                        'direccion'=>$request->direccion,
+                        'telefono'=>$request->telefono,
+                        'contrasena'=>$request->contrasena,
+                        'foto_perfil'=>$request->foto_perfil
+                    ]);
+                } catch(QueryException $ex){ 
+                    $status = '0';
+                    $mensaje = $ex;
+                    if($ex->errorInfo[0] == '23505'){
+                        $mensaje = 'El correo ya ha sido registrado';
+                    }
                 }
+                return response()
+                ->json([
+                    'status' => $status,
+                    'mensaje' => $mensaje,
+                    'paciente' => Paciente::select('*')->where('correo','=',$request->correo)->get()
+                ]);
+            }else{
+                return response()->json([
+                    'mensaje' => 'paciente ya registrado'
+                    ]);
             }
-            return response()
-            ->json([
-                'status' => $status,
-                'mensaje' => $mensaje,
-                'paciente' => Paciente::select('*')->where('correo','=',$request->correo)->get()
-            ]);
+
+           
 
         }
 //consultar un paciente por su id 
@@ -80,9 +89,9 @@
             }
             else{
                 if($contrasena != $paciente->contrasena){
-                    return response()->json(['mensaje' => 'Contraseña incorrecta']);
+                    return response()->json(['mensaje' => 'Contrasena incorrecta']);
                 }else{
-                    return response()->json(['mensaje' => 'Correo o contraseña incorrectos']);
+                    return response()->json(['mensaje' => 'Correo o contrasena incorrectos']);
                 }
             }
         }
@@ -119,8 +128,8 @@
 //antedentes 
 //obtener el historial clinico (observaciones) que el paciente registro
         public function antecedentesPaciente(Request $req){
-            $id_paciente=$request->id_paciente;
-            $observaciones = Observacion::select('*')->where('id_paciente',$id_paciente)->get();
+            $id_paciente=$req->id_paciente;
+            $observaciones = Observacion::select('*')->where('id_paciente','=',$id_paciente)->get();
             return response()->json(['observaciones'=>$observaciones]);
         }
 //editar nu antecedente en especifico
@@ -164,6 +173,7 @@
             } catch(QueryException $ex){ 
                 $status = '0';
                 $mensaje = $ex;
+                
             }
             $observaciones = Observacion::select('*')->where('id_paciente',$req->id_paciente)->get();
            return response() ->json([
@@ -176,9 +186,9 @@
 //citas Finalizadas
 //obtener todas las citas que tuvo el paciente 
         public function historialCitasFinalizadas(Request $req){
-           $citas = DB::table('citas')
-            ->join('medico', 'citas.id_medico', '=', 'medico.id_medico')
-            ->select('medico.*', 'citas.*')->where('id_paciente',$req->id_paciente)
+           $citas = DB::table('cita')
+            ->join('medico', 'cita.id_medico', '=', 'medico.id_medico')
+            ->select('medico.*', 'cita.*')->where('id_paciente',$req->id_paciente)
             ->where('status',"=","f")->get();
             if(is_null($citas)){
                 return response()->json(['mensaje' => 'Sin citas']);
@@ -204,9 +214,9 @@
 //citas Pendientes
 //obtener las citas pendientes del paciente 
 public function citasPendientes(Request $req){
-    $citas = DB::table('citas')
-     ->join('medico', 'citas.id_medico', '=', 'medico.id_medico')
-     ->select('medico.*', 'citas.*')->where('id_paciente',$req->id_paciente)
+    $citas = DB::table('cita')
+     ->join('medico', 'cita.id_medico', '=', 'medico.id_medico')
+     ->select('medico.*', 'cita.*')->where('id_paciente',$req->id_paciente)
      ->where('status',"=","p")->get();
      if(is_null($citas)){
          return response()->json(['mensaje' => 'Sin citas pendientes']);
