@@ -29,5 +29,21 @@ Route::group(['prefix'=>'medico'], function(){
 });
 
 Route::group(['prefix'=>'paciente'], function(){
+    Route::post('new_paciente','Pacientes\PacientesController@registrar');
+    Route::get('pacienteid/{id_paciente}','Pacientes\PacientesController@consultar');
+    Route::post('login','Pacientes\PacientesController@login');
+    Route::post('edit_paciente','Pacientes\PacientesController@actualizar');
     
+    Route::post('new_antecendente','Pacientes\PacientesController@newAntecedente');
+    Route::get('antecedentes/{id_paciente}','Pacientes\PacientesController@antecedentesPaciente');
+    Route::post('editarAntecedente','Pacientes\PacientesController@editarAntecedente');
+
+    Route::get('historialcitas/{id_paciente}','Pacientes\PacientesController@historialCitasFinalizadas');
+    Route::get('citafinalizada/{id_paciente}','Pacientes\PacientesController@verCitaFinalizada');
+    Route::get('citaspendientes/{id_paciente}','Pacientes\PacientesController@citasPendientes');
+
+    Route::get('medicos','Pacientes\PacientesController@todosMedicos');
+    Route::get('medicosEspecialidad/{especialidad}','Pacientes\PacientesController@medicosEspecialidad');
+    Route::get('horarioMedico/{id_medico}','Pacientes\PacientesController@horarioMedico');
+
 });
