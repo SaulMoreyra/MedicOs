@@ -18,6 +18,7 @@ class Horario extends Model
         'id_medico',
         'dia',
         'hora_ingreso',
-        'hora_saida'
+        'hora_saida',
+        'status'
     ];
 }

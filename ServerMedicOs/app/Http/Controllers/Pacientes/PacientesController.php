@@ -5,13 +5,18 @@
 
     use App\Http\Controllers\Controller;
 
-    use App\Models\Paciente; //Direccion de la clase (modelo)
-    use App\Models\Observacion;
+    use App\Http\Models\Paciente; //Direccion de la clase (modelo)
+    use App\Http\Models\Observacion;
+    use App\Http\Models\Cita;
+    use App\Http\Models\Medicamento;
+    use App\Http\Models\Medico;
+    use App\Http\Models\Horario;
     use DB;
     use Illuminate\Database\QueryException;
 
     class PacientesController extends Controller{
-
+//paciente
+ //registrar un nuevo paciente y verificar que no exista 
         public function registrar(Request $request){
             $status = '1';
             $mensaje = 'ok';
@@ -43,14 +48,20 @@
             ]);
 
         }
-
+//consultar un paciente por su id 
         public function consultar(Request $request){
-            return response()
-            ->json([
-                'paciente' => Paciente::select('*')->where('correo','=',$request->correo)->get()
-            ]);
-        }
+            $paciente = Paciente::find($request->id_paciente);
+            if(is_null($paciente)){
+                return response()->json(['mensaje' => 'Paciente no Existe']);
+            }else{
+                return response()->json([
+                    'mensaje' => 'ok',
+                    'paciente' => $paciente
+                    ]);
+            }
 
+        }
+//validar el correo y contraseña 
         public function login(Request $req){
             $correo = $req->correo;
             $contrasena = $req->contrasena;
@@ -75,7 +86,7 @@
                 }
             }
         }
-        
+//actualizar la informacion de un paciente
         public function actualizar(Request $req){
             $status = '1';
             $mensaje = 'ok';
@@ -101,17 +112,18 @@
             ->json([
                 'status' => $status,
                 'mensaje' => $mensaje,
-                'paciente' => Paciente::select('*')->where('correo','=',$req->correo)->get()
+                'paciente' => Paciente::find($req->id_paciente)
             ]);
 
         }
-
+//antedentes 
+//obtener el historial clinico (observaciones) que el paciente registro
         public function antecedentesPaciente(Request $req){
             $id_paciente=$request->id_paciente;
             $observaciones = Observacion::select('*')->where('id_paciente',$id_paciente)->get();
             return response()->json(['observaciones'=>$observaciones]);
         }
-
+//editar nu antecedente en especifico
         public function editarAntecedente(Request $req){
             $status = '1';
             $mensaje = 'ok';
@@ -130,18 +142,14 @@
                 $mensaje = $ex;
             }
             $observaciones = Observacion::select('*')->where('id_paciente',$req->id_paciente)->get();
-           
-       
             return response()
             ->json([
                 'status' => $status,
                 'mensaje' => $mensaje,
                 'observaciones' => $observaciones
             ]);
-
-
         }
-
+//crear un nuevo antecedente 
         public function newAntecedente(Request $req){
             $status = '1';
             $mensaje = 'ok';
@@ -158,20 +166,140 @@
                 $mensaje = $ex;
             }
             $observaciones = Observacion::select('*')->where('id_paciente',$req->id_paciente)->get();
-            
-       
-            return response()
-            ->json([
+           return response() ->json([
                 'status' => $status,
                 'mensaje' => $mensaje,
                 'observaciones' => $observaciones
             ]);
 
         }
+//citas Finalizadas
+//obtener todas las citas que tuvo el paciente 
+        public function historialCitasFinalizadas(Request $req){
+           $citas = DB::table('citas')
+            ->join('medico', 'citas.id_medico', '=', 'medico.id_medico')
+            ->select('medico.*', 'citas.*')->where('id_paciente',$req->id_paciente)
+            ->where('status',"=","f")->get();
+            if(is_null($citas)){
+                return response()->json(['mensaje' => 'Sin citas']);
+            }else{
+                return response()->json([
+                    'mensaje' => 'ok',
+                    'citas' => $citas
+                    ]);
+            }
 
-        public function historialcitas(Request $req){
-            
+        }
+//obtener unas cita en especifica junto con sus medicamentos 
+        public function verCitaFinalizada(Request $req){
+            $cita = Cita::find($req->id_cita);
+            $medicamentos=Medicamento::select('*')->where('id_cita',$req->id_cita)->get();
+            return response()->json([
+                'cita'=>$cita,
+                'medicamentos'=>$medicamentos
+            ]);
+
         }
 
+//citas Pendientes
+//obtener las citas pendientes del paciente 
+public function citasPendientes(Request $req){
+    $citas = DB::table('citas')
+     ->join('medico', 'citas.id_medico', '=', 'medico.id_medico')
+     ->select('medico.*', 'citas.*')->where('id_paciente',$req->id_paciente)
+     ->where('status',"=","p")->get();
+     if(is_null($citas)){
+         return response()->json(['mensaje' => 'Sin citas pendientes']);
+     }else{
+         return response()->json([
+             'mensaje' => 'ok',
+             'citas' => $citas
+             ]);
+     }
+
+ }
+//ver medicos x especialidades 
+ public function medicosEspecialidad(Request $req){
+    $medicos = Medico::select('*')->where('especialidad',$req->especialidad)->get();
+     if(is_null($medicos)){
+         return response()->json(['mensaje' => 'Sin medicos registrados']);
+     }else{
+         return response()->json([
+             'mensaje' => 'ok',
+             'medicos' => $medicos
+             ]);
+     }
+
+ }
+//todos los medicos del server
+ public function todosMedicos(Request $req){
+    $medicos = Medico::select('*')->get();
+     if(is_null($medicos)){
+         return response()->json(['mensaje' => 'Sin medicos registrados']);
+     }else{
+         return response()->json([
+             'mensaje' => 'ok',
+             'medicos' => $medicos
+             ]);
+     }
+ }
+
+ // recibe id de doctor y retorna su horario de atencion 
+ public function horarioMedico(Request $req){
+     $horarios = Horario::select('*')->where('status',true)->where('id_medico',$req->id_medico)->get();
+     if(is_null($horarios)){
+        return response()->json(['mensaje' => 'Sin horario disponible']);
+    }else{
+        return response()->json([
+            'horario' => $horarios
+            ]);
     }
-    ?>
+
+ }
+//obtener las horas que ya estan ocupadas
+ public function horaOcupadas(Request $req){
+     $fecha= $req->fecha;
+     $id_medico=$req->id_medico;
+    $horas = Cita::select('hora')->where('fecha',$fecha)
+    ->where('id_medico',$id_medico)->where('status','p')-get();
+
+    return response()->json([
+        'horas'=>$horas
+    ]);
+
+ }
+
+ //agendar una cita 
+ public function agendarcita(Request $req){
+    $status = '1';
+    $mensaje = 'ok';
+    try{
+        Cita::insert([
+            'id_paciente'=>$req->id_paciente,
+            'id_medico'=>$req->id_medico,
+            'fecha'=>$req->fecha,
+            'hora'=>$req->hora,
+            'latitud'=>$req->latitud,
+            'longitud'=>$req->longitud,
+            'diagnostico'=>$req->diagnostico,
+            'sintomas'=>$req->sintomas,
+            'costo'=>$req->costo,
+            'tipo_cita'=>$req->tipo_cita,
+            'status'=>'p'
+        ]);
+    } catch(QueryException $ex){ 
+        $status = '0';
+        $mensaje = $ex;
+    }
+   return response() ->json([
+        'status' => $status,
+        'mensaje' => $mensaje
+    ]);
+   
+ }
+
+
+
+
+}
+?>
