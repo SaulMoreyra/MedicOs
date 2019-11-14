@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Http\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,7 +23,7 @@ class Medico extends Model
         'especialidad',
         'cedula',
         'procedencia',
-        'lalitud',
+        'latitud',
         'longitud',
         'telefono',
         'costoxconsulta',
