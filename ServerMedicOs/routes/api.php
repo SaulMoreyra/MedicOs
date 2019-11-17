@@ -46,4 +46,6 @@ Route::group(['prefix'=>'paciente'], function(){
     Route::get('medicosEspecialidad/{especialidad}','Pacientes\PacientesController@medicosEspecialidad');
     Route::get('horarioMedico/{id_medico}','Pacientes\PacientesController@horarioMedico');
 
+    Route::post('newCita','Pacientes\PacientesController@agendarcita');
+
 });
