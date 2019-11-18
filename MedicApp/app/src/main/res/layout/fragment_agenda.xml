@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/text_agenda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Agenda"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/horario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="40dp"
+        android:text="Horario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.676"
+        app:layout_constraintStart_toEndOf="@+id/dia"
+        app:layout_constraintTop_toBottomOf="@+id/text_agenda" />
+
+    <TextView
+        android:id="@+id/dia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:text="Días laborales"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_agenda" />
+
+    <CheckBox
+        android:id="@+id/lunes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:text="Lunes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dia" />
+
+    <CheckBox
+        android:id="@+id/martes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:text="Martes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lunes" />
+
+    <CheckBox
+        android:id="@+id/jueves"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:text="Jueves"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/miercoles" />
+
+    <CheckBox
+        android:id="@+id/viernes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:text="Viernes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/jueves" />
+
+    <CheckBox
+        android:id="@+id/sabado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:text="Sábado"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viernes" />
+
+    <CheckBox
+        android:id="@+id/domingo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:text="Domingo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sabado" />
+
+    <CheckBox
+        android:id="@+id/miercoles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:text="Miércoles"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/martes" />
+
+    <Spinner
+        android:id="@+id/inicio1"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="5dp"
+        android:entries="@array/horario"
+        app:layout_constraintEnd_toStartOf="@+id/fin1"
+        app:layout_constraintStart_toStartOf="@+id/lunes"
+        app:layout_constraintTop_toBottomOf="@+id/horario" />
+
+    <Spinner
+        android:id="@+id/fin1"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="30dp"
+        android:entries="@array/horario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horario" />
+    <Spinner
+        android:id="@+id/inicio2"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="5dp"
+        android:entries="@array/horario"
+        app:layout_constraintEnd_toStartOf="@+id/fin2"
+        app:layout_constraintStart_toStartOf="@+id/martes"
+        app:layout_constraintTop_toBottomOf="@+id/inicio1" />
+
+    <Spinner
+        android:id="@+id/fin2"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="30dp"
+        android:entries="@array/horario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fin1" />
+    <Spinner
+        android:id="@+id/inicio3"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="5dp"
+        android:entries="@array/horario"
+        app:layout_constraintEnd_toStartOf="@+id/fin3"
+        app:layout_constraintStart_toStartOf="@+id/miercoles"
+        app:layout_constraintTop_toBottomOf="@+id/inicio2" />
+
+    <Spinner
+        android:id="@+id/fin3"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="30dp"
+        android:entries="@array/horario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fin2" />
+    <Spinner
+    android:id="@+id/inicio4"
+    android:layout_width="wrap_content"
+    android:layout_height="35dp"
+    android:layout_marginStart="130dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="5dp"
+    android:entries="@array/horario"
+    app:layout_constraintEnd_toStartOf="@+id/fin4"
+    app:layout_constraintStart_toStartOf="@+id/jueves"
+    app:layout_constraintTop_toBottomOf="@+id/inicio3" />
+
+    <Spinner
+        android:id="@+id/fin4"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="30dp"
+        android:entries="@array/horario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fin3" />
+    <Spinner
+        android:id="@+id/inicio5"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="5dp"
+        android:entries="@array/horario"
+        app:layout_constraintEnd_toStartOf="@+id/fin5"
+        app:layout_constraintStart_toStartOf="@+id/viernes"
+        app:layout_constraintTop_toBottomOf="@+id/inicio4" />
+
+    <Spinner
+        android:id="@+id/fin5"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="30dp"
+        android:entries="@array/horario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fin4" />
+
+    <Spinner
+        android:id="@+id/inicio6"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="5dp"
+        android:entries="@array/horario"
+        app:layout_constraintEnd_toStartOf="@+id/fin6"
+        app:layout_constraintStart_toStartOf="@+id/sabado"
+        app:layout_constraintTop_toBottomOf="@+id/inicio5" />
+
+    <Spinner
+        android:id="@+id/fin6"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="30dp"
+        android:entries="@array/horario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fin5" />
+
+    <Spinner
+        android:id="@+id/inicio7"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="5dp"
+        android:entries="@array/horario"
+        app:layout_constraintEnd_toStartOf="@+id/fin7"
+        app:layout_constraintStart_toStartOf="@+id/domingo"
+        app:layout_constraintTop_toBottomOf="@+id/inicio6" />
+
+    <Spinner
+        android:id="@+id/fin7"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="30dp"
+        android:entries="@array/horario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fin6" />
+    <Button
+        android:id="@+id/actualizar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="52dp"
+        android:text="Actualizar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
