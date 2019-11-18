@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cita_doctor"
+        android:hint="Citra Por Doctor:"
+        android:textColor="#000"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginStart="15dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Nombre:"
+        android:id="@+id/nombre_paciente"
+        android:textColor="#a9a9a9"
+        android:textSize="18sp"
+        android:layout_marginStart="15dp"
+        android:layout_below="@id/cita_doctor"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sintomas"
+        android:hint="Síntomas:"
+        android:textColor="#a9a9a9"
+        android:textSize="18sp"
+        android:layout_marginStart="15dp"
+        android:layout_below="@id/nombre_paciente"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/diagnostico"
+        android:hint="Citra Por Doctor:"
+        android:textColor="#a9a9a9"
+        android:textSize="18sp"
+        android:layout_marginStart="15dp"
+        android:layout_below="@id/sintomas"
+        />
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/diagnostico"
+        android:layout_marginStart="15dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Medicamentos: "
+            android:textColor="#a9a9a9"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:id="@+id/recyclerViewExpediente"
+            >
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        </ScrollView>
+
+
+</RelativeLayout>
