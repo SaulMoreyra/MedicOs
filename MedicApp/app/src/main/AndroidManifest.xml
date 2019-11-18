@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PerfilExpedienteActivity"></activity>
+        <activity android:name=".ExpedienteActivity"></activity>
+        <activity android:name=".PerfilExpedienteActivity" />
         <activity
             android:name=".MedicoActivity"
             android:label="@string/title_activity_medico"
