@@ -59,6 +59,13 @@ public class CitaPendienteFragment extends Fragment {
         citas.add(cita);
         Cita cita1 = new Cita(1,2,1, "02/01/2019","16:30",-7.99,0.199,"Se va a morir","fiebre",900,'c','c');
         citas.add(cita1);
+        citas.add(cita1);
+        citas.add(cita);
+        citas.add(cita1);
+        citas.add(cita1);
+        citas.add(cita1);
+        citas.add(cita);
+        citas.add(cita1);
         return citas;
     }
 

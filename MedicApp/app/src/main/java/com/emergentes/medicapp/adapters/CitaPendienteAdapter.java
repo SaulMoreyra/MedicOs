@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.emergentes.medicapp.PerfilExpedienteActivity;
 import com.emergentes.medicapp.R;
 import com.emergentes.medicapp.clases.Cita;
 
@@ -53,6 +54,7 @@ public class CitaPendienteAdapter extends RecyclerView.Adapter<CitaPendienteAdap
         TextView nombre;
         TextView direccion;
         TextView hora_cita;
+        ImageView flecha;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -60,6 +62,16 @@ public class CitaPendienteAdapter extends RecyclerView.Adapter<CitaPendienteAdap
             nombre = itemView.findViewById(R.id.nombre_paciente);
             direccion = itemView.findViewById(R.id.direccion_paciente);
             hora_cita = itemView.findViewById(R.id.hora_cita);
+            flecha = itemView.findViewById(R.id.flecha);
+            flecha.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(context, PerfilExpedienteActivity.class);
+                    view.getContext().startActivity(i);
+                    Toast.makeText(view.getContext(),"Citas del paciente",Toast.LENGTH_SHORT).show();
+                }
+            });
+
         }
     }
 

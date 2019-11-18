@@ -1,0 +1,55 @@
+package com.emergentes.medicapp.adapters;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.emergentes.medicapp.R;
+import com.emergentes.medicapp.clases.Cita;
+
+import java.util.List;
+
+public class PerfilExpedienteAdapter extends  RecyclerView.Adapter<PerfilExpedienteAdapter.ViewHolder>{
+    private Context context;
+    private List<Cita> citas;
+
+    public PerfilExpedienteAdapter(Context context, List<Cita> citas) {
+        this.context = context;
+        this.citas = citas;
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_historial,null);
+        return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.fecha.setText("fecha : "+citas.get(position).getFecha());//fecha
+        holder.doctor.setText("doctor: "+citas.get(position).getIdmedico());//doctor
+    }
+
+    @Override
+    public int getItemCount() {
+        return citas.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        TextView fecha;
+        TextView doctor;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            fecha = itemView.findViewById(R.id.fecha_cita);
+            doctor = itemView.findViewById(R.id.doctor);
+        }
+    }
+}
