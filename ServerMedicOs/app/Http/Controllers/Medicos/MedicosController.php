@@ -147,28 +147,37 @@ class MedicosController extends Controller{
     }
 
     public function updateDias(Request $req){
-        
         $diasbd = Horario::select('*')
-        ->where('id_medico','=',$req->id_doctor);
-        $array = array('Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes');
-        $diasrq = $req->dias;
+        ->where('id_medico','=',$req->id_medico)->get();
+
+        //return response()->json(['dia' => $req->dias[0][0]]);
+    
         if(sizeof($diasbd) == 7){
-            foreach($diasbd as $dia){
-                $dia->dia = $diasrq->dia;
-                $dia->hora_ingreso = $diasrq->hora_ingreso;
-                $dia->hora_salida = $diasrq->hora_salida;
-                $dia->status = $diasrq->status;
+            for($i = 0; $i < 7; $i++){
+                $diabd[$i]->dia = $diasrq[$i][0];
+                $diabd[$i]->hora_ingreso = $diasrq[$i][1];
+                $diabd[$i]->hora_salida = $diasrq[$i][2];
+                $diabd[$i]->status = $diasrq[$i][3];
             }
             $diasbd->save();
+            $estado = '1';
+            $mensaje = 'Dias laborales actualizados exitosamente';
         }else{
-            foreach($req->dias as $dia){
+            for($i = 0; $i < 7; $i++){
                 Horario::insert([
-                    'dia' => $dias->dia,
-                    'hora_ingreso' => $dias->hora_ingreso,
-                    'hora_salida' => $dias->hora_salida,
-                    'status' => $dias->status
+                    'id_medico' => $req->id_medico,
+                    'dia' => $req->dias[$i][0],
+                    'hora_ingreso' => $req->dias[$i][1],
+                    'hora_salida' => $req->dias[$i][2],
+                    'status' => $req->dias[$i][3]
                 ]);
             }
+            $estado = '2';
+            $mensaje = 'Dias laborales creados exitosamente';
         }
+        return response()->json([
+            'estado' => $estado,
+            'mensaje' => $mensaje
+        ]);
     }
 }
