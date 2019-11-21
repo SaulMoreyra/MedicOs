@@ -9,23 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".SignupActivity"></activity>
         <activity
             android:name=".menuPrincipal"
             android:label="@string/title_activity_menu_principal"
             android:theme="@style/NoActionBar">
+        </activity>
+        <activity android:name=".RegistroPacienteActivity"></activity>
+
+        <activity android:name=".MainActivity" />
+
+        <activity
+            android:name=".loginActivity2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegistroPacienteActivity">
-        </activity>
-        <activity
-            android:name=".LoginActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".MainActivity" />
+
     </application>
 
 </manifest>
