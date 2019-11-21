@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_perfil"
+            android:icon="@drawable/perfilwhite"
+            android:title="@string/menu_perfil" />
+        <item
+            android:id="@+id/nav_historial"
+            android:icon="@drawable/historialmedicowhite"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_hcitas"
+            android:icon="@drawable/historialwhite"
+            android:title="@string/menu_gallery" />
+        <item
+            android:id="@+id/nav_agendar"
+            android:icon="@drawable/agendarcitawhite"
+            android:title="@string/menu_slideshow" />
+        <item
+            android:id="@+id/nav_pendientes"
+            android:icon="@drawable/citaspendienteswhite"
+            android:title="@string/menu_tools" />
+        <item
+            android:id="@+id/nav_cerrar_session"
+            android:icon="@drawable/cerrarsesionwhite"
+            android:title="@string/menu_cerrarsesion" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/menu_share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/menu_send" />
+        </menu>
+    </item>
+
+</menu>

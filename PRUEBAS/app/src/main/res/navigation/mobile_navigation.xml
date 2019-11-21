@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_perfil">
+
+    <fragment
+        android:id="@+id/nav_perfil"
+        android:name="com.example.prueba1.ui.perfil.PerfilFragment"
+        android:label="@string/menu_perfil"
+        tools:layout="@layout/fragment_perfil" />
+
+    <fragment
+        android:id="@+id/nav_historial"
+        android:name="com.example.prueba1.ui.historial.HistorialFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_historial" />
+
+    <fragment
+        android:id="@+id/nav_hcitas"
+        android:name="com.example.prueba1.ui.hcitas.HcitasFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_hcitas" />
+
+    <fragment
+        android:id="@+id/nav_agendar"
+        android:name="com.example.prueba1.ui.agendar.AgendarFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_agendar" />
+
+    <fragment
+        android:id="@+id/nav_pendientes"
+        android:name="com.example.prueba1.ui.pendientes.PendientesFragment"
+        android:label="@string/menu_tools"
+        tools:layout="@layout/fragment_pendientes" />
+
+    <fragment
+        android:id="@+id/nav_cerrar_session"
+        android:name="com.example.prueba1.ui.cerrarSesion.CerrarCesionFragment"
+        android:label="@string/menu_cerrarsesion"
+        tools:layout="@layout/fragment_cerrar_cesion" />
+
+</navigation>
