@@ -23,13 +23,15 @@ public class AgendaFragment extends Fragment {
         galleryViewModel =
                 ViewModelProviders.of(this).get(AgendaViewModel.class);
         View root = inflater.inflate(R.layout.fragment_agenda, container, false);
-        final TextView textView = root.findViewById(R.id.text_agenda);
+        /*final TextView textView = root.findViewById(R.id.text_agenda);
         galleryViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
             }
         });
+
+         */
         return root;
     }
 }
