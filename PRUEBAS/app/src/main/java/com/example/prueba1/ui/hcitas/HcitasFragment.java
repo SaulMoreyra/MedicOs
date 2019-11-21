@@ -59,7 +59,7 @@ public class    HcitasFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        cargarHcitas();
+        cargarHcitas("");
 
         /*listHcitas.add(new ItemHcitas("12/12/12","12:12","Apendicitis","Chingo Dolor","$5","Domicilio"));
         listHcitas.add(new ItemHcitas("1/1/1","1:1","Apendicitis","Chingo Dolor","$5","Domicilio"));
@@ -83,20 +83,18 @@ public class    HcitasFragment extends Fragment {
                             }
                         } catch (JSONException e) {
                             Log.e("VOLLEY", e.toString());
-                        } catch (IOException e) {
-                            e.printStackTrace();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(HcitasFragment.this,error.toString(),Toast.LENGTH_LONG).show();
+                        //Toast.makeText(HcitasFragment.this,error.toString(),Toast.LENGTH_LONG).show();
                     }
                 });
-        VolleySingleton.getInstanciaVolley(HcitasFragment.this).addToRequestQueue(objetojson);
+       /* VolleySingleton.getInstanciaVolley(HcitasFragment).addToRequestQueue(objetojson);
         objetojson.setRetryPolicy(new DefaultRetryPolicy(400000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));*/
     }
 
 }

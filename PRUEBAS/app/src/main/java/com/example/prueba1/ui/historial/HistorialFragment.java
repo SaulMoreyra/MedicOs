@@ -60,7 +60,7 @@ public class HistorialFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        cargar_historial();
+        //cargar_historial("");
 
         /*listHistorial.add(new ItemHistorial("ant1","desc1"));
         listHistorial.add(new ItemHistorial("ant2","desc2"));
@@ -69,7 +69,7 @@ public class HistorialFragment extends Fragment {
         listHistorial.add(new ItemHistorial("ant5","desc5"));*/
 
     }
-
+/*
     public void cargar_historial(String url){
         listHistorial = new ArrayList<>();
         JsonObjectRequest objetojson = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -98,5 +98,5 @@ public class HistorialFragment extends Fragment {
         VolleySingleton.getInstanciaVolley(HistorialFragment.this).addToRequestQueue(objetojson);
         objetojson.setRetryPolicy(new DefaultRetryPolicy(400000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-    }
+    }*/
 }

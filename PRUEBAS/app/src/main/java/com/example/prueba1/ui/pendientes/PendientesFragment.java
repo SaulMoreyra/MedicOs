@@ -56,7 +56,7 @@ public class PendientesFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        cargarPendiientes();
+        //cargarPendiientes();
 
         /*listPendientes.add(new ItemPendientes("5/5/5","5:5","10008000","Consultorio"));
         listPendientes.add(new ItemPendientes("6/5/5","5:5","10008000","Consultorio"));
@@ -65,7 +65,7 @@ public class PendientesFragment extends Fragment {
         listPendientes.add(new ItemPendientes("9/5/5","5:5","10008000","Consultorio"));*/
 
     }
-
+/*
     public void cargarPendiientes(String url){
         listPendientes = new ArrayList<>();
         JsonObjectRequest objetojson = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -95,5 +95,5 @@ public class PendientesFragment extends Fragment {
         objetojson.setRetryPolicy(new DefaultRetryPolicy(400000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
-
+*/
 }
