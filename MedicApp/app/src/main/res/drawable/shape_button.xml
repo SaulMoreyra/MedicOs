@@ -32,15 +32,15 @@
                 android:topLeftRadius="30dp"
                 android:topRightRadius="30dp" />
             <gradient
-                android:startColor="#69d4fb"
-                android:endColor="#1cbcfb"/>
+                android:startColor="#2E86EB"
+                android:endColor="#2792EB"/>
             <padding
                 android:bottom="0dp"
                 android:left="0dp"
                 android:right="0dp"
                 android:top="0dp" />
             <size
-                android:height="60dp"
+                android:height="50dp"
                 android:width="270dp" />
         </shape>
     </item>

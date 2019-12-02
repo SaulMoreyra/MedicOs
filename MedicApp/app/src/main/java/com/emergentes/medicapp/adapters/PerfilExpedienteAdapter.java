@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.emergentes.medicapp.R;
 import com.emergentes.medicapp.clases.Cita;
+import com.ms.square.android.expandabletextview.ExpandableTextView;
 
 import java.util.List;
 
@@ -27,14 +28,17 @@ public class PerfilExpedienteAdapter extends  RecyclerView.Adapter<PerfilExpedie
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_historial,null);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_historial,null);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.fecha.setText("fecha : "+citas.get(position).getFecha());//fecha
-        holder.doctor.setText("doctor: "+citas.get(position).getIdmedico());//doctor
+        holder.fecha.setText(citas.get(position).getFecha());//fecha
+        holder.doctor.setText(citas.get(position).getDoctor());//doctor
+        holder.cedula.setText(citas.get(position).getCedula_doc());//doctor
+        holder.sintomas.setText(citas.get(position).getSintomas());
+        holder.diagnostico.setText(citas.get(position).getDiagnostico());//doctor
     }
 
     @Override
@@ -43,13 +47,19 @@ public class PerfilExpedienteAdapter extends  RecyclerView.Adapter<PerfilExpedie
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView fecha;
         TextView doctor;
+        TextView fecha;
+        TextView cedula;
+        TextView sintomas;
+        TextView diagnostico;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            sintomas = itemView.findViewById(R.id.sintomas);
+            diagnostico = itemView.findViewById(R.id.diagnostico);
             fecha = itemView.findViewById(R.id.fecha_cita);
             doctor = itemView.findViewById(R.id.doctor);
+            cedula = itemView.findViewById(R.id.cedula);
         }
     }
 }

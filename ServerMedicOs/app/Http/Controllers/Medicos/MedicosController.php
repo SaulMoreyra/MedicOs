@@ -55,6 +55,8 @@ class MedicosController extends Controller{
         }
     }
 
+    
+
     public function registro(Request $request){
         $status = '1';
         $mensaje = 'ok';
@@ -127,12 +129,12 @@ class MedicosController extends Controller{
         ]);
     }
 
-    public function citasPedientes($id_doctor){
+    public function citasPedientes($id_medico){
         $citas = DB::select("select id_cita, c.id_paciente,
         (nombre||' '||primer_apellido||' '||segundo_apellido) as nombre, 
         telefono, correo, fecha, hora, latitud, longitud, tipo_cita
         from cita as c inner join paciente as p on c.id_paciente = p.id_paciente
-        where id_cita = ? and status = 'p'",[$id_doctor]);  
+        where id_medico = ? and status = 'p'",[$id_medico]);  
         return response()->json($citas);
     }
 
