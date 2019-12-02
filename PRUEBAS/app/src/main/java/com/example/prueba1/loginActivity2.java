@@ -10,6 +10,8 @@ import android.view.WindowManager;
 
 public class loginActivity2 extends AppCompatActivity {
 
+    public static String base_url="http://10.0.0.11/";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

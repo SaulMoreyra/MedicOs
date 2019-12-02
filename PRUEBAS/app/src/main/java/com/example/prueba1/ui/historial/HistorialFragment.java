@@ -1,11 +1,13 @@
 package com.example.prueba1.ui.historial;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +27,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.prueba1.R;
 import com.example.prueba1.VolleySingleton;
+import com.example.prueba1.loginActivity2;
+import com.example.prueba1.menuPrincipal;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,7 +37,10 @@ import org.json.JSONObject;
 import java.io.IOError;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 /***aqui implementar metodo on create para rellenar el reciclerview*/
 public class HistorialFragment extends Fragment {
@@ -41,62 +48,90 @@ public class HistorialFragment extends Fragment {
     View v;
     private RecyclerView myrecyclreview;
     private List<ItemHistorial> listHistorial;
-
-    public HistorialFragment(){
-    }
+    private HistorialAdaptador historialAdaptador;
+    private Button nuevo;
+    public HistorialFragment(){ }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_historial, container, false);
         myrecyclreview = (RecyclerView)v.findViewById(R.id.rViewHistorial);
-        HistorialAdaptador historialAdaptador = new HistorialAdaptador(getContext(),listHistorial);
+         historialAdaptador = new HistorialAdaptador(getContext(),listHistorial);
         myrecyclreview.setLayoutManager(new LinearLayoutManager(getActivity()));
         myrecyclreview.setAdapter(historialAdaptador);
+        nuevo =(Button) v.findViewById(R.id.nuevo);
+        nuevo.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),HistorialNew.class);
+                getActivity().startActivity(intent);
+            }
+        });
+
+
         return v;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //cargar_historial("");
-
-        /*listHistorial.add(new ItemHistorial("ant1","desc1"));
-        listHistorial.add(new ItemHistorial("ant2","desc2"));
-        listHistorial.add(new ItemHistorial("ant3","desc3"));
-        listHistorial.add(new ItemHistorial("ant4","desc4"));
-        listHistorial.add(new ItemHistorial("ant5","desc5"));*/
-
+        //String url=loginActivity2.base_url+"api/paciente/antecedentes/"+ menuPrincipal.id_usuario;
+        //
+        //cargar_historial(url);
+        listHistorial = new ArrayList<ItemHistorial>();
     }
-/*
+
     public void cargar_historial(String url){
-        listHistorial = new ArrayList<>();
+        //tipo,n,d,alistHistorial = new ArrayList<>();
+        listHistorial.clear();
         JsonObjectRequest objetojson = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
+
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            JSONArray listaJson = response.optJSONArray("historial");
+                            JSONArray listaJson = response.optJSONArray("observaciones");
                             for (int i=0; i<listaJson.length(); i++){
                                 JSONObject obj_dato = listaJson.getJSONObject(i);
-
+                                   int id =obj_dato.getInt("id_observacion");
+                                 String t =obj_dato.getString("tipo_obs");
+                                 String n =obj_dato.getString("nombre_obs");
+                                 String d =obj_dato.getString("descripcion_obs");
+                                 String a =obj_dato.getString("antiguedad");
+                                listHistorial.add(new ItemHistorial(id,t,n,d,a));
                             }
+
+                            System.out.println("VOLLEY"+listaJson.toString() );
+                            historialAdaptador.notifyDataSetChanged();
                         } catch (JSONException e) {
                             Log.e("VOLLEY", e.toString());
-                        } catch (IOException e) {
-                            e.printStackTrace();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(HistorialFragment.this,error.toString(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(),error.toString(),Toast.LENGTH_LONG).show();
                     }
                 });
-        VolleySingleton.getInstanciaVolley(HistorialFragment.this).addToRequestQueue(objetojson);
+        VolleySingleton.getInstanciaVolley(getContext()).addToRequestQueue(objetojson);
         objetojson.setRetryPolicy(new DefaultRetryPolicy(400000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-    }*/
+    }
+
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        String url=loginActivity2.base_url+"api/paciente/antecedentes/"+ menuPrincipal.id_usuario;
+        cargar_historial(url);
+        historialAdaptador = new HistorialAdaptador(getContext(),listHistorial);
+        myrecyclreview.setLayoutManager(new LinearLayoutManager(getActivity()));
+        myrecyclreview.setAdapter(historialAdaptador);
+    }
 }

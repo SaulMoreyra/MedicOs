@@ -66,7 +66,7 @@ public class EditaPerfilFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_edita_perfil, container, false);
+        return inflater.inflate(R.layout.fragment_perfil_edit, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
