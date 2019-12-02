@@ -24,7 +24,7 @@ import android.view.Menu;
 public class menuPrincipal extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-
+    public static String id_usuario="4";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -20,6 +20,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.prueba1.R;
 import com.example.prueba1.VolleySingleton;
+import com.example.prueba1.loginActivity2;
+import com.example.prueba1.menuPrincipal;
 import com.example.prueba1.ui.historial.HistorialFragment;
 
 import org.json.JSONArray;
@@ -36,7 +38,7 @@ public class PendientesFragment extends Fragment {
     View v;
     private RecyclerView myrecyclerview;
     private List<ItemPendientes> listPendientes;
-
+    PendientesAdaptador pendientesAdaptador;
     public PendientesFragment() {
     }
 
@@ -46,7 +48,7 @@ public class PendientesFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_pendientes,container,false);
         myrecyclerview = (RecyclerView)v.findViewById(R.id.rViewPendientes);
-        PendientesAdaptador pendientesAdaptador = new PendientesAdaptador(getContext(),listPendientes);
+         pendientesAdaptador = new PendientesAdaptador(getContext(),listPendientes);
         myrecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
         myrecyclerview.setAdapter(pendientesAdaptador);
         return v;
@@ -55,43 +57,47 @@ public class PendientesFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String url= loginActivity2.base_url+"api/paciente/citaspendientes/"+ menuPrincipal.id_usuario;
+        cargarPendiientes(url);
 
-        cargarPendiientes();
-
-        /*listPendientes.add(new ItemPendientes("5/5/5","5:5","10008000","Consultorio"));
-        listPendientes.add(new ItemPendientes("6/5/5","5:5","10008000","Consultorio"));
-        listPendientes.add(new ItemPendientes("7/5/5","5:5","10008000","Consultorio"));
-        listPendientes.add(new ItemPendientes("8/5/5","5:5","10008000","Consultorio"));
-        listPendientes.add(new ItemPendientes("9/5/5","5:5","10008000","Consultorio"));*/
+        /*listPendientes.add(new ItemPendientes("5/5/2019","5:5","$300","Consultorio"));
+        listPendientes.add(new ItemPendientes("6/6/2019","6:5","$250","Casa"));
+        listPendientes.add(new ItemPendientes("7/7/2019","7:5","$550","Consultorio"));
+        listPendientes.add(new ItemPendientes("8/8/2019","8:5","$150","Casa"));
+        listPendientes.add(new ItemPendientes("9/10/2019","9:5","$100","Consultorio"));*/
 
     }
 
     public void cargarPendiientes(String url){
-        listPendientes = new ArrayList<>();
+        listPendientes = new ArrayList<ItemPendientes>();
         JsonObjectRequest objetojson = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            JSONArray listaJson = response.optJSONArray("pendientes");
+                            JSONArray listaJson = response.optJSONArray("citas");
                             for (int i=0; i<listaJson.length(); i++){
                                 JSONObject obj_dato = listaJson.getJSONObject(i);
-
+                                int id = obj_dato.getInt("id_cita");
+                                String f =obj_dato.getString("fecha");
+                                String h=obj_dato.getString("hora");
+                                String c=obj_dato.getString("costo");
+                                String t = (obj_dato.getString("tipo_cita").equals("d")) ? "Domicilio" : "Consultorio";
+                                listPendientes.add(new ItemPendientes(id,f,h,c,t));
                             }
+                            pendientesAdaptador.notifyDataSetChanged();
                         } catch (JSONException e) {
                             Log.e("VOLLEY", e.toString());
-                        } catch (IOException e) {
-                            e.printStackTrace();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(HistorialFragment.this,error.toString(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(),error.toString(),Toast.LENGTH_LONG).show();
                     }
                 });
-        VolleySingleton.getInstanciaVolley(HistorialFragment.this).addToRequestQueue(objetojson);
+        VolleySingleton.getInstanciaVolley(getContext()).addToRequestQueue(objetojson);
         objetojson.setRetryPolicy(new DefaultRetryPolicy(400000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }

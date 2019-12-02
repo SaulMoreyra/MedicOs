@@ -19,4 +19,16 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--Strings perfil paciente-->
+    <string name="nombres">Nombre(s)</string>
+    <string name="primerap">Primer Apellido</string>
+    <string name="segundoap">Segundo Apellido</string>
+    <string name="direccion">Dirección</string>
+    <string name="telefono">Teléfono</string>
+    <string name="fecha_nac">Fecha de Nacimiento</string>
+    <string name="curp">Curp</string>
+    <string name="prompt_email">Email</string>
+    <string name="formato_fecha">dd/mm/yyyy</string>
+    <string name="formato_hora">hh:mm</string>
 </resources>

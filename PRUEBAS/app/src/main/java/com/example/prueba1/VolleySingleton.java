@@ -4,7 +4,6 @@ import android.content.Context;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
-import com.example.prueba1.ui.historial.HistorialFragment;
 
 
 public class VolleySingleton {
