@@ -2,70 +2,160 @@
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView
-        android:id="@+id/perfil"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:src="@drawable/user"
-        android:layout_centerHorizontal="true"/>
 
-    <TextView
-        android:id="@+id/nombre_paciente"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/perfil"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="30dp"
-        android:hint="Nombre"
-        android:textColor="#000"
-        android:textSize="22sp"
-        android:textStyle="bold" />
-    <TextView
-        android:id="@+id/telefono"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/nombre_paciente"
-        android:layout_marginLeft="10dp"
-        android:hint="Teléfono"
-        android:textColor="#a9a9a9"
-        android:textSize="18sp"/>
-    <TextView
-        android:id="@+id/correo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/telefono"
-        android:layout_marginLeft="10dp"
-        android:hint="Correo"
-        android:textColor="#a9a9a9"
-        android:textSize="18sp"/>
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="310dp"
-        android:id="@+id/scrollViewRecyclerView"
-        android:layout_below="@id/correo">
-        <androidx.recyclerview.widget.RecyclerView
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/perfil"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/user"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Nombre"/>
+
+            <TextView
+                android:id="@+id/nombre_paciente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Saúl Renato Aragón Moreyra"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="16sp"
+                android:autoSizeMaxTextSize="20sp"/>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/recyclerViewHistorial"
-            android:layout_marginTop="25dp"
-            />
-    </ScrollView>
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Telefono"/>
+            <TextView
+                android:id="@+id/telefono"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="9511024242"
+                android:textColor="#a9a9a9"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Correo Electrónico"/>
+            <TextView
+                android:id="@+id/correo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="drone_cam@outlook.es"
+                android:textColor="#a9a9a9"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="16sp"
+                android:autoSizeMaxTextSize="20sp"
+                android:autoSizeStepGranularity="1sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Dirección"/>
+
+            <TextView
+                android:id="@+id/direccion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autoSizeMaxTextSize="20sp"
+                android:autoSizeMinTextSize="16sp"
+                android:hint="Yalalag #20 Col. Guelaguetza, Sta. Maria Atzompa"
+                android:textColor="#a9a9a9"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Fecha de Nacimiento"/>
+            <TextView
+                android:id="@+id/fecha_nac"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="21/11/1997"
+                android:textColor="#a9a9a9"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="16sp"
+                android:autoSizeMaxTextSize="18sp"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
 
     <Button
+        android:id="@+id/btnHistorial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:layout_below="@id/scrollViewRecyclerView"
-        android:layout_centerHorizontal="true"
-        android:text="Diagnosticar" />
+        android:layout_alignBottom="@+id/btnDiagnostico"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/shape_button"
+        android:text="Historial"
+        android:textColor="#FFF"
+        android:layout_marginBottom="70dp"/>
+
+    <Button
+        android:id="@+id/btnDiagnostico"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/shape_button"
+        android:text="Diagnosticar"
+        android:textColor="#FFF"/>
+
 
 </RelativeLayout>

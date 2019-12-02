@@ -1,78 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="3dp"
+    app:cardCornerRadius="5dp"
     app:cardUseCompatPadding="true"
-    >
-    <RelativeLayout
+    app:cardBackgroundColor="#FFF"
+    android:layout_margin="5dp">
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:id="@+id/perfil"
-            android:src="@drawable/user"
-            app:civ_border_width="2dp"
-            app:civ_border_color="@color/colorPrimary"
-            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/linearperfil"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+            android:gravity="center_vertical">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/perfil"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
+                android:src="@drawable/user"
+                app:civ_border_color="@color/colorPrimary"
+                app:civ_border_width="2dp" />
+        </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/nombre_paciente"
-            android:textSize="22sp"
-            android:hint="Nombre"
-            android:textColor="#000"
-            android:textStyle="bold"
-            android:layout_toRightOf="@id/perfil"
-            android:layout_toEndOf="@id/perfil"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/direccion_paciente"
-            android:textSize="18sp"
-            android:hint="Dirección"
-            android:textColor="#a9a9a9"
-            android:textStyle="bold"
-            android:layout_toRightOf="@id/perfil"
-            android:layout_toEndOf="@id/perfil"
-            android:layout_below="@id/nombre_paciente"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/hora_cita"
-            android:textSize="18sp"
-            android:hint="Hora"
-            android:textColor="#a9a9a9"
-            android:textStyle="bold"
-            android:layout_toRightOf="@id/perfil"
-            android:layout_toEndOf="@id/perfil"
-            android:layout_below="@id/direccion_paciente"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"/>
 
-        <ImageView
-            android:id="@+id/flecha"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginLeft="55dp"
-            android:layout_marginTop="15dp"
-            android:layout_toEndOf="@id/nombre_paciente"
-            android:src="@drawable/arrow" />
-    </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/linear"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/nombre_paciente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:hint="Nombre"
+                android:textColor="#000"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/direccion_paciente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/nombre_paciente"
+                android:layout_margin="5dp"
+                android:hint="Dirección"
+                android:textColor="#a9a9a9"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/hora_cita"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/direccion_paciente"
+                android:layout_margin="3dp"
+                android:hint="Hora"
+                android:textColor="#a9a9a9"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+            <Button
+                android:id="@+id/flecha"
+                android:layout_width="70dp"
+                android:layout_height="45dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/shape_button"
+                android:text="Ver"
+                android:textColor="#FFFFFF" />
+            <Button
+                android:id="@+id/mapa"
+                android:layout_width="70dp"
+                android:layout_height="45dp"
+                android:background="@drawable/shape_button"
+                android:text="Ir"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+    </LinearLayout>
 
 
 </androidx.cardview.widget.CardView>
