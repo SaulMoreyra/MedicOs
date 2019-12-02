@@ -2,12 +2,13 @@ package com.example.prueba1.ui.pendientes;
 
 public class ItemPendientes {
     private String fechaP, horaP, costoP, tipo_citaP;
-
+    private int id_cita;
     public ItemPendientes(){
 
     }
 
-    public ItemPendientes(String fechaP, String horaP, String costoP, String tipo_citaP) {
+    public ItemPendientes(int id_cita,String fechaP, String horaP, String costoP, String tipo_citaP) {
+        this.id_cita=id_cita;
         this.fechaP = fechaP;
         this.horaP = horaP;
         this.costoP = costoP;
@@ -44,5 +45,13 @@ public class ItemPendientes {
 
     public void setTipo_citaP(String tipo_citaP) {
         this.tipo_citaP = tipo_citaP;
+    }
+
+    public int getId_cita() {
+        return id_cita;
+    }
+
+    public void setId_cita(int id_cita) {
+        this.id_cita = id_cita;
     }
 }

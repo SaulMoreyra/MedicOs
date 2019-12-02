@@ -8,24 +8,30 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar">
+        android:theme="@style/Theme.AppCompat.NoActionBar"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ui.hcitas.CitaView"></activity>
+        <activity android:name=".ui.historial.HistorialNew" />
+        <activity android:name=".ui.historial.HistorialEdit" />
+        <activity android:name=".SignupActivity" />
+        <activity android:name=".ui.perfil.PerfilEditActivity" />
+        <activity android:name=".ui.agendar.agenda" />
         <activity
             android:name=".menuPrincipal"
             android:label="@string/title_activity_menu_principal"
-            android:theme="@style/NoActionBar">
+            android:theme="@style/NoActionBar" />
+        <activity android:name=".RegistroPacienteActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".loginActivity2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegistroPacienteActivity">
-        </activity>
-        <activity
-            android:name=".LoginActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".MainActivity" />
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>

@@ -109,7 +109,7 @@
                 $paciente->fecha_nacimiento=$req->fecha_nacimiento;
                 $paciente->direccion=$req->direccion;
                 $paciente->telefono=$req->telefono;
-                $paciente->contrasena=$req->contrasena;
+               /* $paciente->contrasena=$req->contrasena;*/
                 $paciente->foto_perfil=$req->foto_perfil;
                 $paciente->save();
                 
@@ -129,7 +129,7 @@
 //obtener el historial clinico (observaciones) que el paciente registro
         public function antecedentesPaciente(Request $req){
             $id_paciente=$req->id_paciente;
-            $observaciones = Observacion::select('*')->where('id_paciente','=',$id_paciente)->get();
+            $observaciones = Observacion::select('*')->where('id_paciente','=',$id_paciente)->orderBy('id_observacion')->get();
             return response()->json(['observaciones'=>$observaciones]);
         }
 //editar nu antecedente en especifico
@@ -139,7 +139,7 @@
             try{
                 $observacion= Observacion::find($req->id_observacion);
                 $observacion->id_observacion=$req->id_observacion;
-                $observacion->id_paciente=$req->id_paciente;
+                /*$observacion->id_paciente=$req->id_paciente;*/
                 $observacion->tipo_obs=$req->tipo_obs;
                 $observacion->nombre_obs=$req->nombre_obs;
                 $observacion->descripcion_obs=$req->descripcion_obs;

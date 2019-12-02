@@ -26,7 +26,7 @@ public class PendientesAdaptador extends RecyclerView.Adapter<PendientesAdaptado
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_pendiente,parent,false);
+        View vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_pendiente2,parent,false);
         ViewHolder viewHolder = new ViewHolder(vista);
         return viewHolder;
     }

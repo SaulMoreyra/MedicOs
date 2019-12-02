@@ -2,7 +2,7 @@ package com.example.prueba1.ui.historial;
 
 public class ItemHistorial {
     private String tipo, nombreAntecedente, descripcion, antiguedad;
-
+    private int id_antecedente;
     public ItemHistorial(){
     }
 
@@ -11,8 +11,9 @@ public class ItemHistorial {
         this.descripcion = descripcion;
     }
 
-    public ItemHistorial(String tipo, String nombreAntecedente, String descripcion, String antiguedad){
+    public ItemHistorial(int id_antecedente,String tipo, String nombreAntecedente, String descripcion, String antiguedad){
         this.tipo = tipo;
+        this.id_antecedente=id_antecedente;
         this.nombreAntecedente = nombreAntecedente;
         this.descripcion = descripcion;
         this.antiguedad = antiguedad;
@@ -48,5 +49,13 @@ public class ItemHistorial {
 
     public void setAntiguedad(String antiguedad) {
         this.antiguedad = antiguedad;
+    }
+
+    public int getId_antecedente() {
+        return id_antecedente;
+    }
+
+    public void setId_antecedente(int id_antecedente) {
+        this.id_antecedente = id_antecedente;
     }
 }

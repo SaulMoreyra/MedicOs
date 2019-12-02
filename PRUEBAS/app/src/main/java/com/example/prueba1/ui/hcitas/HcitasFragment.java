@@ -23,6 +23,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.prueba1.R;
 import com.example.prueba1.VolleySingleton;
+import com.example.prueba1.loginActivity2;
+import com.example.prueba1.menuPrincipal;
 import com.example.prueba1.ui.historial.HistorialFragment;
 
 import org.json.JSONArray;
@@ -39,7 +41,7 @@ public class    HcitasFragment extends Fragment {
     View v;
     private RecyclerView myrecyclerview;
     private List<ItemHcitas> listHcitas;
-
+    private HcitasAdaptador hcitasAdaptador;
     public HcitasFragment() {
     }
 
@@ -49,24 +51,26 @@ public class    HcitasFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_hcitas, container, false);
         myrecyclerview = (RecyclerView)v.findViewById(R.id.rViewHcitas);
-        HcitasAdaptador hcitasAdaptador = new HcitasAdaptador(getContext(),listHcitas);
+         hcitasAdaptador = new HcitasAdaptador(getContext(),listHcitas);
         myrecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
         myrecyclerview.setAdapter(hcitasAdaptador);
+
         return v;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String url= loginActivity2.base_url+"api/paciente/historialcitas/"+ menuPrincipal.id_usuario;
+        cargarHcitas(url);
 
-        cargarHcitas();
-
-        /*listHcitas.add(new ItemHcitas("12/12/12","12:12","Apendicitis","Chingo Dolor","$5","Domicilio"));
-        listHcitas.add(new ItemHcitas("1/1/1","1:1","Apendicitis","Chingo Dolor","$5","Domicilio"));
-        listHcitas.add(new ItemHcitas("12/12/12","12:12","Apendicitis","Chingo Dolor","$5","Domicilio"));
-        listHcitas.add(new ItemHcitas("2/2/2","2:2","Apendicitis","Chingo Dolor","$5","Domicilio"));
-        listHcitas.add(new ItemHcitas("12/12/12","12:12","Apendicitis","Chingo Dolor","$5","Domicilio"));*/
-
+        /*listHcitas= new ArrayList<ItemHcitas>();
+        listHcitas.add(new ItemHcitas("12/12/12","12:12","Apendicitis","Dolor","$100","Domicilio"));
+        listHcitas.add(new ItemHcitas("5/10/12","1:1","Gastritis","Fiebre","$200","Consultorio"));
+        listHcitas.add(new ItemHcitas("12/12/12","12:12","Gripa","Dolor estomago","$700","Domicilio"));
+        listHcitas.add(new ItemHcitas("2/2/2","2:2","Dengue","Fiabre","$550","Consultorio"));
+        listHcitas.add(new ItemHcitas("12/12/12","12:12","Zika","Dolor de cabeza","$500","Domicilio"));
+       */
     }
 
     public void cargarHcitas(String url){
@@ -76,25 +80,35 @@ public class    HcitasFragment extends Fragment {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            JSONArray listaJson = response.optJSONArray("hcitas");
+                            JSONArray listaJson = response.optJSONArray("citas");
                             for (int i=0; i<listaJson.length(); i++){
                                 JSONObject obj_dato = listaJson.getJSONObject(i);
-
+                                int id= obj_dato.getInt("id_cita");
+                                String f =obj_dato.getString("fecha");
+                                String h =obj_dato.getString("hora");
+                                String d =obj_dato.getString("diagnostico");
+                                String s =obj_dato.getString("sintomas");
+                                String c =obj_dato.getString("costo");
+                                String t = (obj_dato.getString("tipo_cita").equals("d")) ? "Domicilio" : "Consultorio";
+                                String n=obj_dato.getString("nombre");
+                                String e=obj_dato.getString("especialidad");
+                                String te=obj_dato.getString("telefono");
+                                listHcitas.add(new ItemHcitas(id,f,h,d,s,c,t,n,e,te));
                             }
+
+                            hcitasAdaptador.notifyDataSetChanged();
                         } catch (JSONException e) {
                             Log.e("VOLLEY", e.toString());
-                        } catch (IOException e) {
-                            e.printStackTrace();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(HcitasFragment.this,error.toString(),Toast.LENGTH_LONG).show();
+                        //Toast.makeText(HcitasFragment.this,error.toString(),Toast.LENGTH_LONG).show();
                     }
                 });
-        VolleySingleton.getInstanciaVolley(HcitasFragment.this).addToRequestQueue(objetojson);
+        VolleySingleton.getInstanciaVolley(getContext()).addToRequestQueue(objetojson);
         objetojson.setRetryPolicy(new DefaultRetryPolicy(400000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
