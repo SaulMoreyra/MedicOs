@@ -39,7 +39,7 @@ Route::group(['prefix'=>'paciente'], function(){
     Route::post('editarAntecedente','Pacientes\PacientesController@editarAntecedente');
 
     Route::get('historialcitas/{id_paciente}','Pacientes\PacientesController@historialCitasFinalizadas');
-    Route::get('citafinalizada/{id_paciente}','Pacientes\PacientesController@verCitaFinalizada');
+    Route::get('citafinalizada/{id_cita}','Pacientes\PacientesController@verCitaFinalizada');
     Route::get('citaspendientes/{id_paciente}','Pacientes\PacientesController@citasPendientes');
 
     Route::get('medicos','Pacientes\PacientesController@todosMedicos');

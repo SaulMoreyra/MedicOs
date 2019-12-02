@@ -9,7 +9,7 @@
         android:id="@+id/nav_perfil"
         android:name="com.example.prueba1.ui.perfil.PerfilFragment"
         android:label="@string/menu_perfil"
-        tools:layout="@layout/fragment_perfil" />
+        tools:layout="@layout/fragment_perfil_edit" />
 
     <fragment
         android:id="@+id/nav_historial"
