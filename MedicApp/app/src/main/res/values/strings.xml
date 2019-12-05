@@ -20,7 +20,7 @@
     <string name="menu_home">Perfil</string>
     <string name="menu_gallery">Agenda</string>
     <string name="menu_slideshow">Citas Pendientes</string>
-    <string name="menu_tools">Citas</string>
+    <string name="menu_tools">Historial de citas</string>
     <string name="menu_share">Finanzas</string>
     <string name="menu_send">Cerrar Sesion</string>
 
