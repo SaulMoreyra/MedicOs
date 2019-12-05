@@ -28,24 +28,27 @@ public class Medicamento {
         return medicamento;
     }
 
-    public void setMedicamento(String medicamento) {
+    public Medicamento setMedicamento(String medicamento) {
         this.medicamento = medicamento;
+        return this;
     }
 
     public String getDosis() {
         return dosis;
     }
 
-    public void setDosis(String dosis) {
+    public Medicamento setDosis(String dosis) {
         this.dosis = dosis;
+        return this;
     }
 
     public String getHora_aplicacion() {
         return hora_aplicacion;
     }
 
-    public void setHora_aplicacion(String hora_aplicacion) {
+    public Medicamento setHora_aplicacion(String hora_aplicacion) {
         this.hora_aplicacion = hora_aplicacion;
+        return this;
     }
 
     public String getDescrpcion() {
