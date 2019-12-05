@@ -18,7 +18,7 @@ Route::get('/', function () {
 Route::get('testDBConnection', function(){
     try {
         DB::connection()->getPdo();
-        return response()->json(['mensaje' => 'DB Correctamente']);
+        return response()->json(['mensaje' => 'DB Correctamente :B']);
     } catch (Exception $e) {
         die("Could not connect to the database.  Please check your configuration. error:" . $e );
     }
