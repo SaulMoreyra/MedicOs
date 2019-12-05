@@ -1,20 +1,29 @@
 package com.emergentes.medicapp.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.emergentes.medicapp.MedicamentoActivity;
 import com.emergentes.medicapp.R;
 import com.emergentes.medicapp.clases.Cita;
-import com.ms.square.android.expandabletextview.ExpandableTextView;
+import com.emergentes.medicapp.ui.ActivityCitasAnteriores;
 
 import java.util.List;
+
 
 public class PerfilExpedienteAdapter extends  RecyclerView.Adapter<PerfilExpedienteAdapter.ViewHolder>{
     private Context context;
@@ -52,6 +61,7 @@ public class PerfilExpedienteAdapter extends  RecyclerView.Adapter<PerfilExpedie
         TextView cedula;
         TextView sintomas;
         TextView diagnostico;
+        Button botonMedicamento;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -60,6 +70,16 @@ public class PerfilExpedienteAdapter extends  RecyclerView.Adapter<PerfilExpedie
             fecha = itemView.findViewById(R.id.fecha_cita);
             doctor = itemView.findViewById(R.id.doctor);
             cedula = itemView.findViewById(R.id.cedula);
+            botonMedicamento = itemView.findViewById(R.id.botonMedicamentos);
+            botonMedicamento.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(context, MedicamentoActivity.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    view.getContext().startActivity(i);
+                    Toast.makeText(view.getContext(),"Medicamentos del paciente",Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 }

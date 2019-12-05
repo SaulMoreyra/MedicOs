@@ -9,26 +9,35 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.emergentes.medicapp.PerfilExpedienteActivity;
 import com.emergentes.medicapp.R;
-import com.emergentes.medicapp.clases.Cita;
-import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import com.emergentes.medicapp.clases.Cita;
+
+import java.util.List;
 
 public class CitaPendienteAdapter extends RecyclerView.Adapter<CitaPendienteAdapter.ViewHolder> {
     private Context context;
     private List<Cita> citas;
+    private int tag;
 
-    public CitaPendienteAdapter(Context context, List<Cita> citas) {
+    public CitaPendienteAdapter(Context context, List<Cita> citas,int tag) {
         this.context = context;
         this.citas = citas;
+        this.tag=tag;
     }
 
     @NonNull
     @Override
     public CitaPendienteAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+<<<<<<< HEAD
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_cita_pendiente,null);
+=======
+        System.out.println("TAG: "+tag);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_cita_pendiente, null);
+>>>>>>> 32ff3110570221b770b7ea18dd5a5fed97e34407
         return new ViewHolder(view);
     }
 
@@ -49,7 +58,8 @@ public class CitaPendienteAdapter extends RecyclerView.Adapter<CitaPendienteAdap
         TextView nombre;
         TextView fecha;
         TextView hora_cita;
-        Button flecha;
+        Button ver;
+        Button ir;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -57,15 +67,21 @@ public class CitaPendienteAdapter extends RecyclerView.Adapter<CitaPendienteAdap
             nombre = itemView.findViewById(R.id.nombre_paciente);
             fecha = itemView.findViewById(R.id.direccion_paciente);
             hora_cita = itemView.findViewById(R.id.hora_cita);
-            flecha = itemView.findViewById(R.id.flecha);
-            flecha.setOnClickListener(new View.OnClickListener() {
+            ver = itemView.findViewById(R.id.flecha);
+            ir = itemView.findViewById(R.id.mapa);
+            ver.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent i = new Intent(context, PerfilExpedienteActivity.class);
+                    i.putExtra("tag", tag);
                     view.getContext().startActivity(i);
                     Toast.makeText(view.getContext(),"Citas del paciente",Toast.LENGTH_SHORT).show();
                 }
             });
+            if(tag==2){
+                ir.setVisibility(itemView.GONE);
+
+            }
 
         }
     }
