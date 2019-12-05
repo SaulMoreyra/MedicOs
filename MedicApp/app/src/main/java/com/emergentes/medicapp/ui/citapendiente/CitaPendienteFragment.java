@@ -47,7 +47,7 @@ public class CitaPendienteFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         slideshowViewModel = ViewModelProviders.of(this).get(CitaPendienteViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_cita_pendiente, container, false);
+        View root = inflater.inflate(R.layout.fragment_cita_pendiente, container,false );//View v = inflater.inflate(R.layout.camera_fragment, null);
         //final TextView textView = root.findViewById(R.id.text_slideshow);
         citas = new ArrayList<>();
         slideshowViewModel.getText().observe(this, new Observer<String>() {
@@ -61,7 +61,7 @@ public class CitaPendienteFragment extends Fragment {
         System.out.println("VOLLEY REGRESE");
         recyclerView = root.findViewById(R.id.recyclerViewCitaPendiente);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new CitaPendienteAdapter(getContext(),citas);
+        adapter = new CitaPendienteAdapter(getContext(),citas,1);
         recyclerView.setAdapter(adapter);
         return root;
     }

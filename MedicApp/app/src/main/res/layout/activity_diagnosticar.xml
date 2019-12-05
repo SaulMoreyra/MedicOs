@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="15dp">
+
+    <!--  Nombre Label -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sint">
+        <EditText
+            android:id="@+id/sintomas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="Síntomas"
+            android:textSize="20dp"
+            android:selectAllOnFocus="true"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sint"
+        android:id="@+id/diag">
+        <EditText
+            android:id="@+id/primerAp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="Diagnóstico"
+            android:textSize="20dp"
+            android:selectAllOnFocus="true"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/guardar"
+        android:layout_toLeftOf="@+id/view"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:textSize="18dp"
+        android:background="@drawable/shape_button"
+        android:text="Guardar"
+        android:textColor="#FFF"/>
+    />
+
+    <View
+        android:id="@+id/view"
+        android:layout_height="15dp"
+        android:layout_width="0dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        />
+
+    <Button
+        android:id="@+id/agregar"
+        android:layout_toRightOf="@+id/view"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:textSize="18dp"
+        android:background="@drawable/shape_button"
+        android:text="Tratamiento"
+        android:textColor="#FFF"
+        />
+</RelativeLayout>

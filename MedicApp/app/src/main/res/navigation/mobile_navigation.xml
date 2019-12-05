@@ -27,7 +27,7 @@
         android:id="@+id/nav_tools"
         android:name="com.emergentes.medicapp.ui.Citas.CitasFragment"
         android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_citas" />
+        tools:layout="@layout/fragment_historial_citas" />
 
     <fragment
         android:id="@+id/nav_share"

@@ -4,12 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ActivityCitasAnteriores"
-    android:background="@color/colorBack">
-
+    tools:context=".MedicamentoActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_citas_anteriores"
+        android:id="@+id/recyclerViewMedicamento"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

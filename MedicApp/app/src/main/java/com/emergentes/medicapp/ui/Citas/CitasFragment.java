@@ -14,66 +14,107 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.emergentes.medicapp.R;
+import com.emergentes.medicapp.adapters.CitaPendienteAdapter;
+import com.emergentes.medicapp.clases.Cita;
+import com.emergentes.medicapp.clases.VolleySingleton;
+import com.emergentes.medicapp.ui.citapendiente.CitaPendienteViewModel;
 
-public class CitasFragment extends Fragment {
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-    private CitaViewModel toolsViewModel;
-    String[] strings = {"1", "2", "3", "4", "5", "6", "7"};
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.emergentes.medicapp.MedicoActivity.BASE_URL;
+
+public class CitasFragment extends Fragment { ///historial cita
+
+    private CitaPendienteViewModel slideshowViewModel;
+    RecyclerView recyclerView;
+    List<Cita> citas;
+    CitaPendienteAdapter adapter;
+
+    int idcita, idproducto;
+
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        toolsViewModel =
-                ViewModelProviders.of(this).get(CitaViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_citas, container, false);
-        final TextView textView = root.findViewById(R.id.text_tools);
-        toolsViewModel.getText().observe(this, new Observer<String>() {
+
+        slideshowViewModel = ViewModelProviders.of(this).get(CitaPendienteViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_historial_citas, container, false);
+        //final TextView textView = root.findViewById(R.id.text_slideshow);
+        citas = new ArrayList<>();
+        slideshowViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
+                //textView.setText("aqui estoy");
             }
         });
-        RecyclerView rv = new RecyclerView(getContext());
-        rv.setLayoutManager(new LinearLayoutManager(getContext()));
-        rv.setAdapter(new SimpleRVAdapter(strings));
-        return rv;
-        //return root;
-    }
-    /**
-     * A Simple Adapter for the RecyclerView
-     */
-    public class SimpleRVAdapter extends RecyclerView.Adapter<SimpleViewHolder> {
-        private String[] dataSource;
-        public SimpleRVAdapter(String[] dataArgs){
-            dataSource = dataArgs;
-        }
-
-        @Override
-        public SimpleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = new TextView(parent.getContext());
-            SimpleViewHolder viewHolder = new SimpleViewHolder(view);
-            return viewHolder;
-        }
-
-        @Override
-        public void onBindViewHolder(SimpleViewHolder holder, int position) {
-            holder.textView.setText(dataSource[position]);
-        }
-
-        @Override
-        public int getItemCount() {
-            return dataSource.length;
-        }
+        System.out.println("VOLLEY  SATAAAA");
+        getDataJSON();
+        System.out.println("VOLLEY REGRESE");
+        recyclerView = root.findViewById(R.id.recycler_historial_citas);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter = new CitaPendienteAdapter(getContext(),citas,2);
+        recyclerView.setAdapter(adapter);
+        return root;
     }
 
-    /**
-     * A Simple ViewHolder for the RecyclerView
-     */
-    public static class SimpleViewHolder extends RecyclerView.ViewHolder{
-        public TextView textView;
-        public SimpleViewHolder(View itemView) {
-            super(itemView);
-            textView = (TextView) itemView;
-        }
+
+
+    String URL = "";
+    public void getDataJSON(){
+        final int idmedico = 1;
+        citas.clear();
+        URL = "api/medico/citas_pendientes/"+idmedico;
+
+        JsonArrayRequest jsonObjectRequest = new JsonArrayRequest
+                (Request.Method.GET, BASE_URL+URL, null, new Response.Listener<JSONArray>() {
+
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        System.out.println(BASE_URL+URL);
+                        try {
+                            System.out.println("VOLLEY" + response.toString());
+                            for (int i = 0; i<response.length(); i++) {
+                                JSONObject datos = response.getJSONObject(i);
+                                citas.add(new Cita(
+                                        Integer.parseInt(datos.getString("id_cita")),
+                                        Integer.parseInt(datos.getString("id_paciente")),
+                                        idmedico,
+                                        datos.getString("nombre"),
+                                        datos.getString("fecha"),
+                                        datos.getString("hora"),
+                                        Double.parseDouble(datos.getString("latitud")),
+                                        Double.parseDouble(datos.getString("longitud")),
+                                        null,
+                                        null,
+                                        800,
+                                        datos.getString("tipo_cita").charAt(0),
+                                        'p'
+                                ));
+                                adapter.notifyDataSetChanged();
+                            }
+                        } catch (JSONException e) {
+                            System.out.println(e);
+                        }
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        System.out.println(error.toString());
+
+                    }
+                });
+        VolleySingleton.getInstance(getActivity()).addToRequestQueue(jsonObjectRequest);
     }
+
 }
