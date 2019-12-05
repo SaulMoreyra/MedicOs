@@ -29,7 +29,6 @@ public class CitaPendienteAdapter extends RecyclerView.Adapter<CitaPendienteAdap
     @Override
     public CitaPendienteAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_cita_pendiente,null);
-
         return new ViewHolder(view);
     }
 
