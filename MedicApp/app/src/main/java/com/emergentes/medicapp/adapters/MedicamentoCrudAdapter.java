@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.emergentes.medicapp.R;
+import com.emergentes.medicapp.clases.Medicamento;
 
 import java.util.List;
 
@@ -33,7 +34,10 @@ public class MedicamentoCrudAdapter extends RecyclerView.Adapter<MedicamentoCrud
 
     @Override
     public void onBindViewHolder(@NonNull MedicamentoCrudAdapter.ViewHolder holder, int position) {
-
+        holder.medicamento.setText(medicamentos.get(position).getMedicamento());
+        holder.dosis.setText(medicamentos.get(position).getDosis());
+        holder.horario.setText(medicamentos.get(position).getHora_aplicacion());
+        holder.descripcion.setText(medicamentos.get(position).getDescrpcion());
     }
 
     @Override
@@ -52,7 +56,12 @@ public class MedicamentoCrudAdapter extends RecyclerView.Adapter<MedicamentoCrud
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            medicamento =
+            medicamento = itemView.findViewById(R.id.medicamento);
+            dosis = itemView.findViewById(R.id.dosis);
+            horario = itemView.findViewById(R.id.horario);
+            descripcion = itemView.findViewById(R.id.descripcion);
+            editar = itemView.findViewById(R.id.editar);
+            eliminar = itemView.findViewById(R.id.eliminar);
         }
     }
 }
