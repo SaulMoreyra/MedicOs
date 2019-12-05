@@ -50,6 +50,7 @@ public class ActivityCitasAnteriores extends AppCompatActivity {
                 .setDoctor("José Rios José")
                 .setFecha("07/01/2019")
                 .setCedula_doc("8474677FJFJFD4")
+
                 .setDiagnostico("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
 
         Cita cita2 = new Cita()
