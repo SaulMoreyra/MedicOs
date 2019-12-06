@@ -2,25 +2,26 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.hcitas.CitaView"
-    tools:layout_editor_absoluteX="8dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:background="#007C5A5A"
-    android:backgroundTint="#00D1C9C9"
-    android:orientation="vertical">
+    android:background="#ffffff"
+    android:backgroundTint="#ffffff"
+    android:orientation="vertical"
+    tools:context=".ui.hcitas.CitaView"
+    tools:layout_editor_absoluteX="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#ffffff"
         android:orientation="horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="wrap_content"
             android:layout_height="118dp"
-            android:layout_marginBottom="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
             android:elevation="10dp"
             android:src="@drawable/doctor" />
 
@@ -73,6 +74,7 @@
         android:layout_width="match_parent"
         android:layout_height="32dp"
         android:layout_margin="20dp"
+        android:background="#ffffff"
         android:orientation="horizontal">
 
         <TextView
@@ -97,6 +99,7 @@
         android:layout_height="32dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:background="#ffffff"
         android:orientation="horizontal">
 
         <TextView
@@ -124,6 +127,7 @@
         android:layout_height="42dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="5dp"
+        android:background="#ffffff"
         android:fontFamily="monospace"
         android:text="diagnostico"
         android:textColor="@color/opt_round_card_view_dark_background"
@@ -134,8 +138,9 @@
         android:layout_width="match_parent"
         android:layout_height="71dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:layout_marginTop="5dp"
+        android:layout_marginRight="20dp"
+        android:background="#ffffff"
         android:fontFamily="monospace"
         android:text="sintomas"
         android:textColor="@color/opt_round_card_view_dark_background"
@@ -145,11 +150,14 @@
         android:id="@+id/textView6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="MEDICAMENTOS" />
+        android:background="#ffffff"
+        android:text="MEDICAMENTOS"
+        android:textColor="@color/opt_round_card_view_dark_background" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
         android:id="@+id/rViewMedicinas"
-        android:layout_height="373dp" />
+        android:layout_width="match_parent"
+        android:layout_height="373dp"
+        android:background="#ffffff" />
 
 </LinearLayout>
