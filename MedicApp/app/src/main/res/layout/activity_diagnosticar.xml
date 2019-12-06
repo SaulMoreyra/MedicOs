@@ -5,66 +5,97 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="15dp">
-
-    <!--  Nombre Label -->
-    <com.google.android.material.textfield.TextInputLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/sint">
-        <EditText
-            android:id="@+id/sintomas"
+        android:layout_height="match_parent" >
+
+        <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/sintomas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Síntomas"
+                android:selectAllOnFocus="true"
+                android:textSize="18dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/diag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:hint="Síntomas"
-            android:textSize="20dp"
-            android:selectAllOnFocus="true"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_below="@+id/sint">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/sint"
-        android:id="@+id/diag">
-        <EditText
-            android:id="@+id/primerAp"
+            <EditText
+                android:id="@+id/primerAp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Diagnóstico"
+                android:selectAllOnFocus="true"
+                android:textSize="18dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ScrollView
+            android:id="@+id/scroll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:hint="Diagnóstico"
-            android:textSize="20dp"
-            android:selectAllOnFocus="true"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_below="@+id/diag">
 
-    <Button
-        android:id="@+id/guardar"
-        android:layout_toLeftOf="@+id/view"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_alignParentBottom="true"
-        android:textSize="18dp"
-        android:background="@drawable/shape_button"
-        android:text="Guardar"
-        android:textColor="#FFF"/>
-    />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_add_obs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/diag" />
+        </ScrollView>
 
-    <View
-        android:id="@+id/view"
-        android:layout_height="15dp"
-        android:layout_width="0dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        />
+        <LinearLayout
+            android:id="@+id/menuLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/scroll"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:layout_marginBottom="15dp">
 
-    <Button
-        android:id="@+id/agregar"
-        android:layout_toRightOf="@+id/view"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_alignParentBottom="true"
-        android:textSize="18dp"
-        android:background="@drawable/shape_button"
-        android:text="Tratamiento"
-        android:textColor="#FFF"
-        />
+            <Button
+                android:id="@+id/btnObserv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/shape_button"
+                android:text="Añadir Observacion"
+                android:textColor="#FFF"/>
+
+            <Button
+                android:id="@+id/guardar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/shape_button"
+                android:text="Guardar\n"
+                android:textColor="#FFF"/>
+
+            <Button
+                android:id="@+id/agregar"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_button"
+                android:text="Tratamiento\n"
+                android:textColor="#FFF"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>

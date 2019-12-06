@@ -44,6 +44,7 @@ public class MedicamentoAdapter extends RecyclerView.Adapter<MedicamentoAdapter.
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+
         TextView medicamento;
         TextView indicaciones;
         TextView descrip;

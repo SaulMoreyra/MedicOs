@@ -17,6 +17,7 @@ public class PerfilExpedienteActivity extends AppCompatActivity {
 
     Button historial;
     Button diagnosticar;
+    Button historial_clinico;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +25,16 @@ public class PerfilExpedienteActivity extends AppCompatActivity {
         Bundle datos = this.getIntent().getExtras();
         int tag_r = datos.getInt("tag");
         System.out.println("TAG: "+tag_r);
+        historial_clinico = (Button) findViewById(R.id.btnHistorial_clinico);
+        historial_clinico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("VOLLEY","CLICKEO");
+                Intent i = new Intent(getApplicationContext(), HistorialClinicoActivity.class);
+                //putExtraData("tag",);
+                startActivity(i);
+            }
+        });
 
 
         historial = (Button) findViewById(R.id.btnHistorial);
