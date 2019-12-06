@@ -24,7 +24,7 @@ import android.view.Menu;
 public class MedicoActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    public static String BASE_URL = "http://192.168.1.71/";
+    public static String BASE_URL = "http://192.168.1.90/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

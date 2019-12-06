@@ -18,8 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.MedicamentosCrud"></activity>
-        <activity android:name=".DiagnosticarActivity"></activity>
+        <activity android:name=".HistorialClinicoActivity"></activity>
+        <activity android:name=".ui.MedicamentosCrud" />
+        <activity android:name=".DiagnosticarActivity" />
         <activity android:name=".MedicamentoActivity" />
         <activity android:name=".ui.ActivityCitasAnteriores" />
         <activity android:name=".PerfilExpedienteActivity" />

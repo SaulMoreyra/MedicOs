@@ -36,6 +36,11 @@
     <string name="esc">Esc. de Procedencia</string>
     <string name="especilidad">Especialidad</string>
 
+    <!-- Strings observaciones -->
+    <string name="tipo">Tipo (Pj. Alergia):</string>
+    <string name="descrpcion">Descripción (Pj. Metoclopramida):</string>
+    <string name="antiguedad">Antigüedad:</string>
+
     <!-- Strings agenda médico -->
     <string-array name="horario">
         <item>00:00</item>
