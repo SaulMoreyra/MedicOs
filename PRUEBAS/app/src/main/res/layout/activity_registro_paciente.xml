@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#202732">
+    android:background="#ffffff"
+    android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -11,7 +12,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView2"
@@ -19,7 +20,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:gravity="center"
-                android:text="FORMULARIO DE REGISTRO" />
+                android:text="FORMULARIO DE REGISTRO"
+                android:textColor="@android:color/black" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -36,7 +38,8 @@
                     android:ems="10"
                     android:gravity="center"
                     android:hint="Nombre"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textColor="@android:color/black" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -55,7 +58,8 @@
                         android:ems="10"
                         android:gravity="center"
                         android:hint="Apellido Paterno"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:textColor="@android:color/black" />
 
                     <EditText
                         android:id="@+id/aMaternoU"
@@ -65,7 +69,8 @@
                         android:ems="10"
                         android:gravity="center"
                         android:hint="Apellido Materno"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:textColor="@android:color/black" />
                 </LinearLayout>
 
                 <EditText
@@ -77,7 +82,8 @@
                     android:ems="10"
                     android:gravity="center"
                     android:hint="Correo Electronico"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress"
+                    android:textColor="@android:color/black" />
 
                 <EditText
                     android:id="@+id/fNacimientoU"
@@ -89,7 +95,8 @@
                     android:ems="10"
                     android:gravity="center"
                     android:hint="Fecha de Nacimiento"
-                    android:inputType="date" />
+                    android:inputType="date"
+                    android:textColor="@android:color/black" />
             </LinearLayout>
 
             <TextView
@@ -99,7 +106,8 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="8dp"
                 android:gravity="center"
-                android:text="Datos del Domicilio" />
+                android:text="Datos del Domicilio"
+                android:textColor="@android:color/black" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -121,7 +129,8 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:hint="Codigo Postal"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:textColor="@android:color/black" />
 
                     <EditText
                         android:id="@+id/ciudadU"
@@ -130,7 +139,8 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:hint="Ciudad"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:textColor="@android:color/black" />
                 </LinearLayout>
 
                 <EditText
@@ -142,7 +152,8 @@
                     android:layout_marginBottom="8dp"
                     android:ems="10"
                     android:hint="Calle"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textColor="@android:color/black" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -159,7 +170,8 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:hint="Colonia"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:textColor="@android:color/black" />
 
                     <EditText
                         android:id="@+id/numeroU"
@@ -168,7 +180,8 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:hint="Numero"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:textColor="@android:color/black" />
                 </LinearLayout>
 
                 <EditText
@@ -179,7 +192,8 @@
                     android:layout_marginRight="20dp"
                     android:ems="10"
                     android:hint="Entre Calles"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textColor="@android:color/black" />
 
                 <EditText
                     android:id="@+id/telefonoU"
@@ -189,7 +203,8 @@
                     android:layout_marginRight="20dp"
                     android:ems="10"
                     android:hint="Telefono"
-                    android:inputType="phone" />
+                    android:inputType="phone"
+                    android:textColor="@android:color/black" />
             </LinearLayout>
 
             <TextView
@@ -199,7 +214,8 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="8dp"
                 android:gravity="center"
-                android:text="Informacion Extra" />
+                android:text="Informacion Extra"
+                android:textColor="@android:color/black" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -215,7 +231,8 @@
                     android:layout_marginBottom="8dp"
                     android:ems="10"
                     android:hint="CURP"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textColor="@android:color/black" />
 
             </LinearLayout>
 
@@ -225,6 +242,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                android:background="@drawable/button_login_background"
                 android:gravity="center"
                 android:text="Registrarse" />
 
