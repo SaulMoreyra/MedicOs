@@ -3,25 +3,39 @@ package com.emergentes.medicapp.clases;
 public class Medicamento {
 
     private int id_cita;
+    private int id_medicamento;
     private String medicamento;
     private String dosis;
     private String hora_aplicacion;
     private String descrpcion;
 
-    public Medicamento(int id_cita, String medicamento, String dosis, String hora_aplicacion, String descrpcion) {
+    public Medicamento(){};
+
+    public Medicamento(int id_cita,int id_medicamento, String medicamento, String dosis, String hora_aplicacion, String descrpcion) {
         this.id_cita = id_cita;
+        this.id_medicamento = id_medicamento;
         this.medicamento = medicamento;
         this.dosis = dosis;
         this.hora_aplicacion = hora_aplicacion;
         this.descrpcion = descrpcion;
     }
 
+    public int getId_medicamento() {
+        return id_medicamento;
+    }
+
+    public Medicamento setId_medicamento(int id_medicamento) {
+        this.id_medicamento = id_medicamento;
+        return this;
+    }
+
     public int getId_cita() {
         return id_cita;
     }
 
-    public void setId_cita(int id_cita) {
+    public Medicamento setId_cita(int id_cita) {
         this.id_cita = id_cita;
+        return this;
     }
 
     public String getMedicamento() {
@@ -55,7 +69,8 @@ public class Medicamento {
         return descrpcion;
     }
 
-    public void setDescrpcion(String descrpcion) {
+    public Medicamento setDescrpcion(String descrpcion) {
         this.descrpcion = descrpcion;
+        return this;
     }
 }

@@ -132,15 +132,33 @@ class MedicosController extends Controller{
     public function citasPedientes($id_medico){
         $citas = DB::select("select id_cita, c.id_paciente,
         (nombre||' '||primer_apellido||' '||segundo_apellido) as nombre, 
-        telefono, correo, fecha, hora, latitud, longitud, tipo_cita
+        telefono, correo, to_char(fecha,'DD/MM/YYYY') as fecha, to_char(hora,'HH:MI PM') as hora, 
+        latitud, longitud, tipo_cita, direccion, 
+        to_char(fecha_nacimiento,'DD/MM/YYYY') as fecha_nacimiento
         from cita as c inner join paciente as p on c.id_paciente = p.id_paciente
         where id_medico = ? and status = 'p'",[$id_medico]);  
         return response()->json($citas);
     }
 
+    public function citasPasadas($id_medico){
+        $citas = DB::select("select id_cita, c.id_paciente,
+        (nombre||' '||primer_apellido||' '||segundo_apellido) as nombre, 
+        telefono, correo, to_char(fecha,'DD/MM/YYYY') as fecha, to_char(hora,'HH:MI PM') as hora, 
+        latitud, longitud, tipo_cita, direccion, 
+        to_char(fecha_nacimiento,'DD/MM/YYYY') as fecha_nacimiento
+        from cita as c inner join paciente as p on c.id_paciente = p.id_paciente
+        where id_medico = ? and status = 'c'",[$id_medico]);  
+        return response()->json($citas);
+    }
+
     public function historialCitas($id_paciente){
+        $citas = DB::select("select (nombre||' '||primer_apellido||' '||segundo_apellido) as nombre,
+        id_cita, fecha, cedula, sintomas, diagnostico 
+        from medico inner join cita on medico.id_medico = cita.id_medico
+        where id_paciente = ? and status = 'c'
+        order by fecha desc",[$id_paciente]);  
         return response()
-        ->json(Cita::select('*')->where('id_paciente','=',$id_paciente)->get());
+        ->json($citas);
     }
 
     public function historialMedicamentos($id_cita){

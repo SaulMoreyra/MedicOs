@@ -37,10 +37,25 @@ public class CitaPendienteAdapter extends RecyclerView.Adapter<CitaPendienteAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CitaPendienteAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CitaPendienteAdapter.ViewHolder holder, final int position) {
         holder.nombre.setText(citas.get(position).getNombre());//nombre paciente
         holder.fecha.setText(citas.get(position).getFecha());//direccion
         holder.hora_cita.setText(citas.get(position).getHora());
+
+        holder.ver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(context, PerfilExpedienteActivity.class);
+                i.putExtra("tag", tag);
+                i.putExtra("all",citas.get(position).getAll());
+                view.getContext().startActivity(i);
+                Toast.makeText(view.getContext(),"Citas del paciente",Toast.LENGTH_SHORT).show();
+            }
+        });
+        if(tag==2){
+            holder.ir.setVisibility(View.GONE);
+        }
+
     }
 
     @Override
@@ -64,21 +79,6 @@ public class CitaPendienteAdapter extends RecyclerView.Adapter<CitaPendienteAdap
             hora_cita = itemView.findViewById(R.id.hora_cita);
             ver = itemView.findViewById(R.id.flecha);
             ir = itemView.findViewById(R.id.mapa);
-            ver.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent i = new Intent(context, PerfilExpedienteActivity.class);
-                    i.putExtra("tag", tag);
-                    view.getContext().startActivity(i);
-                    Toast.makeText(view.getContext(),"Citas del paciente",Toast.LENGTH_SHORT).show();
-                }
-            });
-            if(tag==2){
-                ir.setVisibility(itemView.GONE);
-
-            }
-
         }
     }
-
 }

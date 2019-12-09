@@ -107,7 +107,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/sintomas"
-                    android:hint="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    android:hint=""
                     android:textColor="#000"
                     android:textSize="18sp"
                     android:textStyle="bold"/>
@@ -153,7 +153,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/diagnostico"
-                    android:hint="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    android:hint=""
                     android:textColor="#000"
                     android:textSize="18sp"
                     android:textStyle="bold"/>
@@ -180,7 +180,6 @@
                         android:layout_gravity="right|bottom"
                         android:background="@android:color/transparent"/>
                 </com.ms.square.android.expandabletextview.ExpandableTextView-->
-
             </LinearLayout>
 
             <Button
@@ -191,11 +190,10 @@
                 android:layout_marginLeft="150dp"
                 android:layout_gravity="right"
                 android:background="@drawable/shape_button"
-                android:hint="Medicamentos">
-
+                android:text="Medicamentos"
+                android:textColor="#FFFFFF">
             </Button>
         </LinearLayout>
-
 
         <!--LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"

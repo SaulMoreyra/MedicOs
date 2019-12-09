@@ -46,6 +46,7 @@ create table observaciones(
 	id_paciente int references paciente(id_paciente),
 	tipo_obs text,
 	nombre_obs text,
+	
 	descripcion_obs text,
 	antiguedad date 
 );
@@ -67,6 +68,7 @@ create table cita(
 
 create table medicamento(
 	id_cita int references cita(id_cita),
+	id_medicamento SERIAL primary key,
 	medicamento text,
 	dosis text,
 	horario_aplicacion text,
