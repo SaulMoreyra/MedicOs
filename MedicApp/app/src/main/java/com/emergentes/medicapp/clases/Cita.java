@@ -1,6 +1,6 @@
 package com.emergentes.medicapp.clases;
 
-public class Cita {
+public class Cita{
     private String nombre;
     private int idcita;
     private int idpaciente;

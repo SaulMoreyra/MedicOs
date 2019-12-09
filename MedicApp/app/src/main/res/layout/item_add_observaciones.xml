@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cont_tipo"
+            android:layout_below="@+id/diag">
+            <EditText
+                android:id="@+id/tipo_obs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="@string/tipo"
+                android:selectAllOnFocus="true"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cont_tipo"
+            android:id="@+id/cont_descrip">
+            <EditText
+                android:id="@+id/descripcion_obs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="@string/descrpcion"
+                android:selectAllOnFocus="true"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cont_descrip"
+            android:id="@+id/cont_antiguedad">
+            <EditText
+                android:id="@+id/antiguedad_obs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="@string/antiguedad"
+                android:selectAllOnFocus="true"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>
