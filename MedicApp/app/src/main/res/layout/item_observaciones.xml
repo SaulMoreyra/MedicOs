@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/contenedor">
+
+    <!--  Nombre Label -->
+        <TextView
+            android:id="@+id/tipo_obs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="@string/tipo"
+            android:textSize="18dp"
+            android:selectAllOnFocus="true"/>
+
+        <TextView
+            android:id="@+id/descripcion_obs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="@string/descrpcion"
+            android:textSize="18dp"
+            android:selectAllOnFocus="true"
+            android:layout_below="@id/tipo_obs"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/descripcion_obs"
+        android:hint="Antigüedad:"
+        android:textSize="18dp"
+        android:id="@+id/antiguedad_obs"
+        />
+
+</RelativeLayout>

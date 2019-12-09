@@ -9,8 +9,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/contenedor">
 
-
-    <LinearLayout
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -132,6 +134,19 @@
 
 
     </LinearLayout>
+    </ScrollView>
+    <Button
+        android:id="@+id/btnHistorial_clinico"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/shape_button"
+        android:text="Historial clínico"
+        android:textColor="#FFF"
+        android:layout_marginBottom="120dp"/>
+
     <Button
         android:id="@+id/btnHistorial"
         android:layout_width="wrap_content"
@@ -142,7 +157,7 @@
         android:background="@drawable/shape_button"
         android:text="Historial"
         android:textColor="#FFF"
-        android:layout_marginBottom="70dp"/>
+        android:layout_marginBottom="60dp"/>
 
     <Button
         android:id="@+id/btnDiagnostico"
