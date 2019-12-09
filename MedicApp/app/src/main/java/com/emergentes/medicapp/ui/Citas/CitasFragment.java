@@ -73,7 +73,7 @@ public class CitasFragment extends Fragment { ///historial cita
     public void getDataJSON(){
         final int idmedico = 1;
         citas.clear();
-        URL = "api/medico/citas_pendientes/"+idmedico;
+        URL = "api/medico/citas_pasadas/"+idmedico;
 
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest
                 (Request.Method.GET, BASE_URL+URL, null, new Response.Listener<JSONArray>() {
@@ -85,21 +85,19 @@ public class CitasFragment extends Fragment { ///historial cita
                             System.out.println("VOLLEY" + response.toString());
                             for (int i = 0; i<response.length(); i++) {
                                 JSONObject datos = response.getJSONObject(i);
-                                citas.add(new Cita(
-                                        Integer.parseInt(datos.getString("id_cita")),
-                                        Integer.parseInt(datos.getString("id_paciente")),
-                                        idmedico,
-                                        datos.getString("nombre"),
-                                        datos.getString("fecha"),
-                                        datos.getString("hora"),
-                                        Double.parseDouble(datos.getString("latitud")),
-                                        Double.parseDouble(datos.getString("longitud")),
-                                        null,
-                                        null,
-                                        800,
-                                        datos.getString("tipo_cita").charAt(0),
-                                        'p'
-                                ));
+                                Cita c = new Cita()
+                                        .setIdcita(Integer.parseInt(datos.getString("id_cita")))
+                                        .setIdpaciente(Integer.parseInt(datos.getString("id_paciente")))
+                                        .setIdmedico(idmedico)
+                                        .setNombre(datos.getString("nombre"))
+                                        .setFecha(datos.getString("fecha"))
+                                        .setHora(datos.getString("hora"))
+                                        .setLatitud(Double.parseDouble(datos.getString("latitud")))
+                                        .setLongitud(Double.parseDouble(datos.getString("longitud")))
+                                        .setTipo_cita(datos.getString("tipo_cita").charAt(0));
+
+                                c.setAll(datos.toString());
+                                citas.add(c);
                                 adapter.notifyDataSetChanged();
                             }
                         } catch (JSONException e) {

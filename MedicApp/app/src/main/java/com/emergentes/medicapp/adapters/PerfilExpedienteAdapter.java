@@ -42,12 +42,23 @@ public class PerfilExpedienteAdapter extends  RecyclerView.Adapter<PerfilExpedie
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder,final int position) {
         holder.fecha.setText(citas.get(position).getFecha());//fecha
         holder.doctor.setText(citas.get(position).getDoctor());//doctor
         holder.cedula.setText(citas.get(position).getCedula_doc());//doctor
         holder.sintomas.setText(citas.get(position).getSintomas());
         holder.diagnostico.setText(citas.get(position).getDiagnostico());//doctor
+
+        holder.botonMedicamento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(context, MedicamentoActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                i.putExtra("id_cita",citas.get(position).getIdcita()+"");
+                view.getContext().startActivity(i);
+                Toast.makeText(view.getContext(),"Medicamentos del paciente",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -71,15 +82,6 @@ public class PerfilExpedienteAdapter extends  RecyclerView.Adapter<PerfilExpedie
             doctor = itemView.findViewById(R.id.doctor);
             cedula = itemView.findViewById(R.id.cedula);
             botonMedicamento = itemView.findViewById(R.id.botonMedicamentos);
-            botonMedicamento.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent i = new Intent(context, MedicamentoActivity.class);
-                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    view.getContext().startActivity(i);
-                    Toast.makeText(view.getContext(),"Medicamentos del paciente",Toast.LENGTH_SHORT).show();
-                }
-            });
         }
     }
 }

@@ -103,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:autoSizeMaxTextSize="20sp"
                 android:autoSizeMinTextSize="16sp"
-                android:hint="Yalalag #20 Col. Guelaguetza, Sta. Maria Atzompa"
+                android:hint="Yalalag #20 "
                 android:textColor="#a9a9a9"
                 android:textSize="18sp"
                 android:textStyle="bold" />

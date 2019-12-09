@@ -23,6 +23,7 @@ Route::group(['prefix'=>'medico'], function(){
     Route::post('new_doctor','Medicos\MedicosController@registro');
     Route::post('edit_doctor','Medicos\MedicosController@editar');
     Route::get('citas_pendientes/{id_doctor}','Medicos\MedicosController@citasPedientes');
+    Route::get('citas_pasadas/{id_doctor}','Medicos\MedicosController@citasPasadas');
     Route::get('paciente_citas/{id_paciente}','Medicos\MedicosController@historialCitas');
     Route::get('cita_medicamentos/{id_cita}','Medicos\MedicosController@historialMedicamentos');
     Route::post('horario','Medicos\MedicosController@updateDias');

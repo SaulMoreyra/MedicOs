@@ -16,11 +16,12 @@ public class Cita {
     private char status;
     private String doctor;
     private String cedula_doc;
-
+    private String all;
 
     public Cita(){}
 
-    public Cita(int idcita, int idpaciente, int idmedico, String nombre, String fecha, String hora, double latitud, double longitud, String diagnostico, String sintomas, int costo, char tipo_cita, char status) {
+    public Cita(int idcita, int idpaciente, int idmedico, String nombre, String fecha, String hora,
+                double latitud, double longitud, String diagnostico, String sintomas, int costo, char tipo_cita, char status) {
         this.nombre = nombre;
         this.idcita = idcita;
         this.idpaciente = idpaciente;
@@ -34,6 +35,14 @@ public class Cita {
         this.costo = costo;
         this.tipo_cita = tipo_cita;
         this.status = status;
+    }
+
+    public void setAll(String all){
+        this.all = all;
+    }
+
+    public String getAll(){
+        return all;
     }
 
     public Cita setNombre(String nombre) {

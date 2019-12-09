@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".ui.Agenda.AgendaFragment"
     android:orientation="vertical">
 
 
@@ -18,8 +19,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
@@ -39,7 +39,36 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="15dp"
                     android:layout_marginTop="25dp"
+                    android:gravity="center_horizontal">
+
+                    <CheckBox
+                        android:id="@+id/lunes"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Lunes" />
+
+                    <Spinner
+                        android:id="@+id/inicio1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="5dp"
+                        android:entries="@array/horario" />
+
+                    <Spinner
+                        android:id="@+id/fin1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/horario" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="15dp"
                     android:gravity="center_horizontal">
 
@@ -180,7 +209,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="15dp"
+                    android:layout_marginBottom="25dp"
                     android:gravity="center_horizontal">
 
                     <CheckBox
@@ -204,34 +233,7 @@
                         android:entries="@array/horario" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="25dp"
-                    android:gravity="center_horizontal">
 
-                    <CheckBox
-                        android:id="@+id/lunes"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:text="Lunes" />
-
-                    <Spinner
-                        android:id="@+id/inicio1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="5dp"
-                        android:entries="@array/horario" />
-
-                    <Spinner
-                        android:id="@+id/fin1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:entries="@array/horario" />
-
-                </LinearLayout>
 
 
             </LinearLayout>

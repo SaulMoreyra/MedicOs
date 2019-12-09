@@ -10,15 +10,16 @@ class Medicamento extends Model
     protected $table = 'medicamento';
 
     //llave primaria
-    protected $primaryKey = null;
+    protected $primaryKey = 'id_medicamento';
     public $timestamps = false;
 
     //aqui los elementos a mostrarse en la tabla 
     protected $filltable = [
         'id_cita',
+        'id_medicamento',
         'medicamento',
         'dosis',
-        'horarios_aplicacion',
+        'horario_aplicacion',
         'descripcion'
     ];
 }
