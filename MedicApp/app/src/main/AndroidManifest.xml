@@ -13,6 +13,7 @@
         <activity android:name=".ui.MedicamentoNew"></activity>
         <activity android:name=".ui.MedicamentosCrud" />
         <activity android:name=".DiagnosticarActivity" />
+        <activity android:name=".HistorialClinicoActivity"></activity>
         <activity android:name=".MedicamentoActivity" />
         <activity android:name=".ui.ActivityCitasAnteriores" />
         <activity android:name=".PerfilExpedienteActivity" />
