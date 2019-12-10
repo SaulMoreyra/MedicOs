@@ -5,7 +5,6 @@
     android:paddingLeft="30dp"
     android:paddingRight="30dp"
     android:paddingTop="20dp"
-    android:paddingBottom="20dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/contenedor">
 
@@ -135,40 +134,48 @@
 
     </LinearLayout>
     </ScrollView>
-    <Button
-        android:id="@+id/btnHistorial_clinico"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <LinearLayout
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:background="@drawable/shape_button"
-        android:text="Historial clínico"
-        android:textColor="#FFF"
-        android:layout_marginBottom="120dp"/>
-
-    <Button
-        android:id="@+id/btnHistorial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:background="@drawable/shape_button"
-        android:text="Historial"
-        android:textColor="#FFF"
-        android:layout_marginBottom="60dp"/>
+        android:orientation="vertical"
+        android:layout_marginBottom="20dp">
 
-    <Button
-        android:id="@+id/btnDiagnostico"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/shape_button"
-        android:text="Diagnosticar"
-        android:textColor="#FFF"/>
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp">
+
+            <Button
+                android:id="@+id/btnHistorial"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_button"
+                android:text="Historial"
+                android:layout_gravity="left"
+                android:textColor="#FFF"/>
+
+            <Button
+                android:id="@+id/btnHistorial_clinico"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_button"
+                android:layout_gravity="right"
+                android:text="Historial clínico"
+                android:textColor="#FFF"/>
+
+        </GridLayout>
+
+        <Button
+            android:id="@+id/btnDiagnostico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_button"
+            android:text="Diagnosticar"
+            android:textColor="#FFF"/>
 
 
+    </LinearLayout>
 </RelativeLayout>

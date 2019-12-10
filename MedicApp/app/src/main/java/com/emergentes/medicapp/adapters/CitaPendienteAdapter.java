@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.emergentes.medicapp.MapsActivity;
 import com.emergentes.medicapp.PerfilExpedienteActivity;
 import com.emergentes.medicapp.R;
 import androidx.annotation.NonNull;
@@ -48,12 +49,27 @@ public class CitaPendienteAdapter extends RecyclerView.Adapter<CitaPendienteAdap
                 Intent i = new Intent(context, PerfilExpedienteActivity.class);
                 i.putExtra("tag", tag);
                 i.putExtra("all",citas.get(position).getAll());
+                i.putExtra("latitud", citas.get(position).getLatitud()+"");
+                i.putExtra("longitud", citas.get(position).getLongitud()+"");
                 view.getContext().startActivity(i);
                 Toast.makeText(view.getContext(),"Citas del paciente",Toast.LENGTH_SHORT).show();
             }
         });
         if(tag==2){
             holder.ir.setVisibility(View.GONE);
+        }else{
+            holder.ir.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(context, MapsActivity.class);
+                    i.putExtra("tag", tag);
+                    i.putExtra("all",citas.get(position).getAll());
+                    i.putExtra("latitud", citas.get(position).getLatitud()+"");
+                    i.putExtra("longitud", citas.get(position).getLongitud()+"");
+                    view.getContext().startActivity(i);
+                    Toast.makeText(view.getContext(),"Citas del paciente",Toast.LENGTH_SHORT).show();
+                }
+            });
         }
 
     }

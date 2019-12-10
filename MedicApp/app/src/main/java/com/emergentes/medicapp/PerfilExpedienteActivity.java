@@ -55,6 +55,7 @@ public class PerfilExpedienteActivity extends AppCompatActivity {
                 Log.i("VOLLEY","CLICKEO");
                 Intent i = new Intent(getApplicationContext(), HistorialClinicoActivity.class);
                 //putExtraData("tag",);
+                i.putExtra("all",dat.toString());
                 startActivity(i);
             }
         });
@@ -81,6 +82,7 @@ public class PerfilExpedienteActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Log.i("VOLLEY","CLICKEO");
                     Intent i = new Intent(getApplicationContext(), DiagnosticarActivity.class);
+                    i.putExtra("all",dat.toString());
                     startActivity(i);
                 }
             });

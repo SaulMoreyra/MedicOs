@@ -13,6 +13,9 @@ import com.emergentes.medicapp.adapters.ObservacionAdapter;
 import com.emergentes.medicapp.clases.Observacion;
 import com.emergentes.medicapp.ui.MedicamentosCrud;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,11 +23,20 @@ public class DiagnosticarActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     List<Observacion> observaciones;
     ObservacionAdapter adapter;
-
+    JSONObject dat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diagnosticar);
+
+
+
+        try {
+            dat = new JSONObject(getIntent().getStringExtra("all"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         observaciones = new ArrayList<>();
         recyclerView = findViewById(R.id.recycler_add_obs);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

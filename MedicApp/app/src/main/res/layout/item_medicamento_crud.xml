@@ -121,20 +121,20 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="10dp">
 
-                <androidx.appcompat.widget.AppCompatButton
+                <!--androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/editar"
                     android:layout_height="wrap_content"
                     android:layout_width="120dp"
                     android:background="@drawable/shape_button"
-                    android:text="Editar"/>
+                    android:text="Editar"/-->
 
-                <androidx.appcompat.widget.AppCompatButton
+                <!--androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/eliminar"
                     android:layout_height="wrap_content"
                     android:layout_width="120dp"
                     android:background="@drawable/shape_button"
                     android:layout_gravity="right"
-                    android:text="Eliminar"/>
+                    android:text="Eliminar"/-->
 
             </GridLayout>
 

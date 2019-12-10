@@ -14,6 +14,9 @@ import com.emergentes.medicapp.adapters.MedicamentoCrudAdapter;
 import com.emergentes.medicapp.clases.Medicamento;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,10 +26,17 @@ public class MedicamentosCrud extends AppCompatActivity {
     private RecyclerView recyclerView;
     private MedicamentoCrudAdapter adapter;
 
+    JSONObject dat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medicamentos_crud);
+
+        try {
+            dat = new JSONObject(getIntent().getStringExtra("all"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         recyclerView = findViewById(R.id.recycler_medicamentos);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -38,6 +48,7 @@ public class MedicamentosCrud extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), MedicamentoNew.class);
+                i.putExtra("all",dat.toString());
                 startActivity(i);
             }
         });
