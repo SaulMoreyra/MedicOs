@@ -92,6 +92,17 @@
             android:textColor="@color/opt_round_card_view_dark_background"
             android:textSize="14sp" />
 
+        <TextView
+            android:id="@+id/costoxc"
+            android:layout_width="358dp"
+            android:layout_height="33dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:fontFamily="monospace"
+            android:text="$300"
+            android:textColor="@color/opt_round_card_view_dark_background"
+            android:textSize="14sp" />
+
         <Button
             android:id="@+id/cita"
             android:layout_width="match_parent"
