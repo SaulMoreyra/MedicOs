@@ -50,11 +50,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/diag">
 
-            <androidx.recyclerview.widget.RecyclerView
+            <!--androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_add_obs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/diag" />
+                android:layout_below="@+id/diag" /-->
         </ScrollView>
 
         <LinearLayout

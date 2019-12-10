@@ -17,26 +17,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DiagnosticarActivity extends AppCompatActivity {
-    RecyclerView recyclerView;
-    List<Observacion> observaciones;
-    ObservacionAdapter adapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diagnosticar);
-        observaciones = new ArrayList<>();
-        recyclerView = findViewById(R.id.recycler_add_obs);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new ObservacionAdapter(getApplication(),getObservaciones(),2);
-        recyclerView.setAdapter(adapter);
 
         Button add_obs = findViewById(R.id.btnObserv);
         add_obs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int position = (observaciones.size());
-                insertItem(position);
+                Intent i = new Intent(getApplicationContext(), ObservacionesActivity.class);
+                startActivity(i);
             }
         });
 
@@ -48,20 +39,6 @@ public class DiagnosticarActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-    }
-
-    private List<Observacion> getObservaciones() {
-        Observacion o = new Observacion(1,1,"Alergia","Abejas","1998-10-10");
-        Observacion o1 = new Observacion(1,1,"Alergia","Metoclopramida","1998-05-10");
-        //observaciones.add(o);
-        observaciones.add(o1);
-        return observaciones;
-    }
-
-    public void insertItem(int position) {
-        observaciones.add(position, new Observacion(1, 1, "","",""));
-        adapter.notifyItemInserted(position);
-
     }
 
 }

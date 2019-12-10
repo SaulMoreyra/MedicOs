@@ -4,15 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.emergentes.medicapp.adapters.ObservacionAdapter;
 import com.emergentes.medicapp.clases.Observacion;
+import com.emergentes.medicapp.ui.AddObservationActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HistorialClinicoActivity extends AppCompatActivity {
+public class ObservacionesActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     List<Observacion> observaciones;
     ObservacionAdapter adapter;
@@ -20,12 +24,20 @@ public class HistorialClinicoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_observaciones);
         observaciones = new ArrayList<>();
-        setContentView(R.layout.activity_historial_clinico);
         recyclerView = findViewById(R.id.recycler_observaciones);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new ObservacionAdapter(getApplication(),getObservaciones());//,1
+        adapter = new ObservacionAdapter(getApplication(),getObservaciones());//,2
         recyclerView.setAdapter(adapter);
+        FloatingActionButton floatingActionButton = findViewById(R.id.floating_action_button);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), AddObservationActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     private List<Observacion> getObservaciones() {
