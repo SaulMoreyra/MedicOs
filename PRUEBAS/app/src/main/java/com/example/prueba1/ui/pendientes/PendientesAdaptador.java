@@ -1,15 +1,19 @@
 package com.example.prueba1.ui.pendientes;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.prueba1.R;
+import com.example.prueba1.ui.agendar.ItemDoctor;
+import com.example.prueba1.ui.agendar.agenda;
 
 import java.util.List;
 
@@ -17,7 +21,7 @@ public class PendientesAdaptador extends RecyclerView.Adapter<PendientesAdaptado
 
     Context context;
     List<ItemPendientes> datosPendientes;
-
+    View vista;
     public PendientesAdaptador(Context context, List<ItemPendientes> listPendientes) {
         this.context = context;
         this.datosPendientes = listPendientes;
@@ -26,7 +30,7 @@ public class PendientesAdaptador extends RecyclerView.Adapter<PendientesAdaptado
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_pendiente2,parent,false);
+        vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_pendiente2,parent,false);
         ViewHolder viewHolder = new ViewHolder(vista);
         return viewHolder;
     }
@@ -37,6 +41,7 @@ public class PendientesAdaptador extends RecyclerView.Adapter<PendientesAdaptado
         holder.horaP.setText(datosPendientes.get(position).getHoraP());
         holder.costoP.setText(datosPendientes.get(position).getCostoP());
         holder.tipo_citaP.setText(datosPendientes.get(position).getTipo_citaP());
+        bind(datosPendientes.get(position), vista);
     }
 
     @Override
@@ -59,6 +64,20 @@ public class PendientesAdaptador extends RecyclerView.Adapter<PendientesAdaptado
             costoP = (TextView)item.findViewById(R.id.costoP);
             tipo_citaP = (TextView)item.findViewById(R.id.tipo_citaP);
         }
+
+    }
+
+    private void bind(ItemPendientes item, final View view) {
+        final ItemPendientes nuevo =item;
+        Button button = (Button) view.findViewById(R.id.detalles);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                Intent intent = new Intent(context, detallesPendientes.class);
+                context.startActivity(intent);
+                //Toast.makeText(mContext,"selec"+nom, Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
 

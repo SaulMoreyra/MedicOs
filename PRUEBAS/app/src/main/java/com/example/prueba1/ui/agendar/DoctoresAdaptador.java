@@ -2,6 +2,9 @@ package com.example.prueba1.ui.agendar;
 
 import android.content.Context;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +12,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.Locale;
+
 import com.example.prueba1.R;
+import com.example.prueba1.ui.hcitas.ItemHcitas;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -38,8 +44,10 @@ public class DoctoresAdaptador extends RecyclerView.Adapter<DoctoresAdaptador.Vi
         holder.nombreM.setText(datosDoctor.get(position).getNombre());
         holder.especialidadM.setText(datosDoctor.get(position).getEspecialidad());
         holder.telefonoM.setText(datosDoctor.get(position).getTelefono());
-        holder.direccionM.setText(datosDoctor.get(position).getDireccion());
+        holder.direccionM.setText(calculardireccion(datosDoctor.get(position).getLatitud(),datosDoctor.get(position).getLongitud()));
         holder.procedenciaM.setText(datosDoctor.get(position).getProcedencia());
+        holder.costoxc.setText("$"+datosDoctor.get(position).getCostoxconsulta());
+        datosDoctor.get(position).setDireccion(calculardireccion(datosDoctor.get(position).getLatitud(),datosDoctor.get(position).getLongitud()));
         bind(datosDoctor.get(position), vista);
     }
 
@@ -54,7 +62,8 @@ public class DoctoresAdaptador extends RecyclerView.Adapter<DoctoresAdaptador.Vi
         TextView especialidadM;
         TextView telefonoM;
         TextView direccionM;
-        TextView procedenciaM;
+        TextView procedenciaM,costoxc;
+
 
         public ViewHolder(View item){
 
@@ -64,21 +73,47 @@ public class DoctoresAdaptador extends RecyclerView.Adapter<DoctoresAdaptador.Vi
             telefonoM = (TextView)item.findViewById(R.id.telefonoM);
             direccionM = (TextView)item.findViewById(R.id.direcionM);
             procedenciaM = (TextView)item.findViewById(R.id.procedenciaM);
+            costoxc=(TextView)item.findViewById(R.id.costoxc);
         }
     }
 
-    private void bind(final ItemDoctor item, final View view) {
-
+    private void bind(ItemDoctor item, final View view) {
+        final ItemDoctor nuevo =item;
         Button button = (Button) view.findViewById(R.id.cita);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
                 Intent intent = new Intent(context,agenda.class);
+                intent.putExtra("id_medico", nuevo.getId_medico());
+                intent.putExtra("nombre", nuevo.getNombre());
+                intent.putExtra("especialidad", nuevo.getEspecialidad());
+                intent.putExtra("telefono", nuevo.getTelefono());
+                intent.putExtra("direccion",nuevo.getDireccion());
+                intent.putExtra("procedencia",nuevo.getProcedencia());
+                intent.putExtra("costo",nuevo.getCostoxconsulta());
                 context.startActivity(intent);
                 //Toast.makeText(mContext,"selec"+nom, Toast.LENGTH_LONG).show();
             }
         });
 
+    }
+
+
+    public String calculardireccion(String la,String lo) {
+        try {
+            double la2=Double.parseDouble(la),lo2=Double.parseDouble(lo);
+            Geocoder geocoder = new Geocoder(context, Locale.getDefault());
+            List<Address> list = geocoder.getFromLocation(
+                    la2, lo2, 1);
+            if (!list.isEmpty()) {
+                Address DirCalle = list.get(0);
+                return DirCalle.getAddressLine(0);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
 }

@@ -2,11 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.emergentes.medicapp">
 
+<<<<<<< HEAD
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the 'MyLocation' functionality.
     -->
+=======
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+>>>>>>> c4d76166c2f7d8b5fe0074969f2c24e38d607590
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,6 +26,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+<<<<<<< HEAD
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -28,6 +40,10 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps"></activity>
 
+=======
+        <activity android:name=".ui.AddObservationActivity"></activity>
+        <activity android:name=".ObservacionesActivity" />
+>>>>>>> c4d76166c2f7d8b5fe0074969f2c24e38d607590
         <activity android:name=".ui.MedicamentoNew" />
         <activity android:name=".ui.MedicamentosCrud" />
         <activity android:name=".DiagnosticarActivity" />
@@ -62,13 +78,20 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
     </application>
+<<<<<<< HEAD
+
+=======
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<<<<<<< HEAD
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
+=======
+>>>>>>> facbbfb8151ddded03d166f283768f8015687b7a
+>>>>>>> c4d76166c2f7d8b5fe0074969f2c24e38d607590
 </manifest>

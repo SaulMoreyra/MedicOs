@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#353758"
     android:orientation="vertical">
 
-    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    <androidx.cardview.widget.CardView
         android:id="@+id/card_view3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -97,6 +96,17 @@
                 android:textColor="@color/opt_round_card_view_dark_background"
                 android:textSize="14sp" />
 
+            <TextView
+                android:id="@+id/costo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="monospace"
+                android:textColor="@color/opt_round_card_view_dark_background"
+                android:textSize="14sp" />
+
         </LinearLayout>
 
 
@@ -104,7 +114,7 @@
 
     <EditText
         android:id="@+id/et_mostrar_fecha_picker"
-        android:layout_width="match_parent"
+        android:layout_width="398dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
@@ -114,7 +124,7 @@
 
     <EditText
         android:id="@+id/et_mostrar_hora_picker"
-        android:layout_width="match_parent"
+        android:layout_width="398dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
@@ -125,23 +135,38 @@
 
     <RadioGroup
         android:layout_width="match_parent"
-        android:layout_height="194dp">
+        android:layout_height="83dp">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/domicilio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="DOMICILIO" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/consultorio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="CONSULTORIO" />
     </RadioGroup>
 
+    <TextView
+        android:id="@+id/textS"
+        android:layout_width="match_parent"
+        android:layout_height="26dp"
+        android:gravity="center"
+        android:text="Sintomas"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/sintomas"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/confirmarcita"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/button_login_background"
