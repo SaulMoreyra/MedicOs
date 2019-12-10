@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="30dp"
+    android:paddingRight="20dp"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/contenedor">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selecciona un fecha:"
+        android:id="@+id/text"
+        android:textSize="17dp"
+        />
+    <Spinner
+        android:id="@+id/select_mes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/meses"
+        android:layout_toRightOf="@+id/text"
+        android:paddingLeft="15dp"
+        />
+    <TextView
+        android:layout_below="@+id/select_mes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Finanzas de diciembre"
+        android:id="@+id/mes"
+        android:textSize="17dp"
+        android:layout_marginTop="5dp"
+        >
+    </TextView>
+    <TableLayout
+        android:layout_below="@+id/mes"
+        android:id="@+id/demotable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:stretchColumns="0,1,2"
+        android:visibility="visible"
+        android:padding="5dp">
+        <TableRow
+            android:background="@android:color/holo_blue_light"
+            android:id="@+id/titulo">
+
+            <TextView
+                android:layout_margin="0.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="8dp"
+                android:background="@color/opt_round_card_view_light_background"
+                android:gravity="center"
+                android:padding="2dp"
+                android:text="Quincena\n"
+                android:textColor="@android:color/black"
+                android:textSize="17sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="50dp"
+                android:text="Consultas por quincena"
+                android:textSize="17sp"
+                android:padding="2dp"
+                android:gravity="center"
+                android:textColor="@android:color/black"
+                android:background="@color/opt_round_card_view_light_background"
+                android:layout_margin="0.5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ingreso por \nquincena"
+                android:textSize="17sp"
+                android:padding="2dp"
+                android:gravity="center"
+                android:textColor="@android:color/black"
+                android:background="@color/opt_round_card_view_light_background"
+                android:layout_margin="0.5dp"/>
+        </TableRow>
+
+        <TableRow
+            android:background="@android:color/holo_blue_light"
+            android:id="@+id/semana1">
+            <TextView
+                android:layout_margin="0.5dp"
+
+                android:background="@color/opt_round_card_view_light_background"
+                android:gravity="center"
+                android:padding="2dp"
+                android:text="1"
+                android:textColor="@android:color/black"
+                android:textSize="17sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/quno"
+                android:text="5"
+                android:textSize="17sp"
+                android:padding="2dp"
+                android:gravity="center"
+                android:textColor="@android:color/black"
+                android:background="@color/opt_round_card_view_light_background"
+                android:layout_margin="0.5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tuno"
+                android:text="$ 1540.00"
+                android:textSize="17sp"
+                android:padding="2dp"
+                android:gravity="center"
+                android:textColor="@android:color/black"
+                android:background="@color/opt_round_card_view_light_background"
+                android:layout_margin="0.5dp"/>
+        </TableRow>
+        <TableRow
+            android:background="@android:color/holo_blue_light"
+            android:id="@+id/semana2">
+            <TextView
+                android:layout_margin="0.5dp"
+                android:background="@color/opt_round_card_view_light_background"
+                android:gravity="center"
+                android:padding="2dp"
+                android:text="2"
+                android:textColor="@android:color/black"
+                android:textSize="17sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/qdos"
+                android:text="4"
+                android:textSize="17sp"
+                android:padding="2dp"
+                android:gravity="center"
+                android:textColor="@android:color/black"
+                android:background="@color/opt_round_card_view_light_background"
+                android:layout_margin="0.5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tdos"
+                android:text="$ 1540.00"
+                android:textSize="17sp"
+                android:padding="2dp"
+                android:gravity="center"
+                android:textColor="@android:color/black"
+                android:background="@color/opt_round_card_view_light_background"
+                android:layout_margin="0.5dp"/>
+        </TableRow>
+
+        <TableRow
+            android:background="@android:color/holo_blue_light"
+            android:id="@+id/total">
+            <TextView
+                android:layout_margin="0.5dp"
+                android:background="@color/opt_round_card_view_light_background"
+                android:gravity="center"
+                android:padding="2dp"
+                android:text="Total"
+                android:textColor="@android:color/black"
+                android:textSize="17sp" />
+            <TextView
+                android:id="@+id/total_consultas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="9"
+                android:textSize="17sp"
+                android:padding="2dp"
+                android:gravity="center"
+                android:textColor="@android:color/black"
+                android:background="@color/opt_round_card_view_light_background"
+                android:layout_margin="0.5dp"/>
+            <TextView
+                android:id="@+id/total_ingreso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$ 3080.00"
+                android:textSize="17sp"
+                android:padding="2dp"
+                android:gravity="center"
+                android:textColor="@android:color/black"
+                android:background="@color/opt_round_card_view_light_background"
+                android:layout_margin="0.5dp"/>
+        </TableRow>
+
+    </TableLayout>
+</RelativeLayout>
