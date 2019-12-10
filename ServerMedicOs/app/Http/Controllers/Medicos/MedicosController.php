@@ -214,4 +214,27 @@ class MedicosController extends Controller{
         return response()
         ->json($horario);
     }
+
+    public function newMedicamento(Request $req){
+        Medicamento::insert([
+            'id_cita'=> $req->id_cita,
+            'medicamento'=> $req->medicamento,
+            'dosis'=> $req->dosis,
+            'horario_aplicacion'=> $req->horario_aplicacion,
+            'descripcion'=> $req->descripcion
+        ]);
+
+        return response()->json([
+            'mensaje' => "Medicamento agregado correctamente"
+        ]);
+    }
+
+    public function deleteMedicamento($id_medicamento){
+        Medicamento::find($id_medicamento)
+        ->delete();
+
+        return response()->json([
+            'mensaje' => "Medicamento eliminado correctamente"
+        ]);
+    }
 }

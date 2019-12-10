@@ -60,8 +60,8 @@ public class MedicamentoCrudAdapter extends RecyclerView.Adapter<MedicamentoCrud
             dosis = itemView.findViewById(R.id.dosis);
             horario = itemView.findViewById(R.id.horario);
             descripcion = itemView.findViewById(R.id.descripcion);
-            editar = itemView.findViewById(R.id.editar);
-            eliminar = itemView.findViewById(R.id.eliminar);
+            //editar = itemView.findViewById(R.id.editar);
+            //eliminar = itemView.findViewById(R.id.eliminar);
         }
     }
 }

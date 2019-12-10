@@ -28,6 +28,8 @@ Route::group(['prefix'=>'medico'], function(){
     Route::get('cita_medicamentos/{id_cita}','Medicos\MedicosController@historialMedicamentos');
     Route::post('horario','Medicos\MedicosController@updateDias');
     Route::get('get_horario/{id_doctor}','Medicos\MedicosController@getDias');
+    Route::post('new_medicamento','Medicos\MedicosController@newMedicamento');
+    Route::get('delete_medicamento/{id_medicamento}','Medicos\MedicosController@deleteMedicamento');
 });
 
 Route::group(['prefix'=>'paciente'], function(){

@@ -42,6 +42,9 @@
     <string name="antiguedad">Antigüedad:</string>
 
     <!-- Strings agenda médico -->
+    <string name="title_activity_maps">Map</string>
+
+    <!-- Strings meses_finanzas -->
     <string-array name="horario">
         <item>00:00</item>
         <item>01:00</item>
@@ -68,8 +71,6 @@
         <item>22:00</item>
         <item>23:00</item>
     </string-array>
-
-    <!-- Strings meses_finanzas -->
     <string-array name="meses">
         <item>enero</item>
         <item>febrero</item>
