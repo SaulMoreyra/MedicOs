@@ -19,6 +19,7 @@ class Horario extends Model
         'dia',
         'hora_ingreso',
         'hora_saida',
-        'status'
+        'status',
+        'id_dia',
     ];
 }
