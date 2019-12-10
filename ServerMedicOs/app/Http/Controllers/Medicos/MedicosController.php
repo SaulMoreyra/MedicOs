@@ -168,18 +168,23 @@ class MedicosController extends Controller{
 
     public function updateDias(Request $req){
         $diasbd = Horario::select('*')
-        ->where('id_medico','=',$req->id_medico)->get();
+        ->where('id_medico','=',$req->id_medico)
+        ->orderBy('id_dia', 'asc')
+        ->get();
 
-        //return response()->json(['dia' => $req->dias[0][0]]);
-    
+        //return response()->json($diasbd[0]);
+        
         if(sizeof($diasbd) == 7){
-            for($i = 0; $i < 7; $i++){
-                $diabd[$i]->dia = $diasrq[$i][0];
-                $diabd[$i]->hora_ingreso = $diasrq[$i][1];
-                $diabd[$i]->hora_salida = $diasrq[$i][2];
-                $diabd[$i]->status = $diasrq[$i][3];
+            for ($i=0; $i<7; $i++){
+                $dia = Horario::select('*')
+                ->where('id_medico',$req->id_medico)
+                ->where('id_dia',$req->dias[$i][4])
+                ->update([
+                    'hora_ingreso'=>$req->dias[$i][1],
+                    'hora_salida'=>$req->dias[$i][2],
+                    'status'=>$req->dias[$i][3],
+                    ]);
             }
-            $diasbd->save();
             $estado = '1';
             $mensaje = 'Dias laborales actualizados exitosamente';
         }else{
@@ -189,7 +194,8 @@ class MedicosController extends Controller{
                     'dia' => $req->dias[$i][0],
                     'hora_ingreso' => $req->dias[$i][1],
                     'hora_salida' => $req->dias[$i][2],
-                    'status' => $req->dias[$i][3]
+                    'status' => $req->dias[$i][3],
+                    'id_dia' => $req->dias[$i][4]
                 ]);
             }
             $estado = '2';
@@ -199,5 +205,13 @@ class MedicosController extends Controller{
             'estado' => $estado,
             'mensaje' => $mensaje
         ]);
+    }
+
+    public function getDias($id_medico){
+        $horario = DB::select("select id_medico, dia, to_char(hora_ingreso,'HH24:MI') as hora_ingreso, 
+                            to_char(hora_salida,'HH24:MI') as hora_salida, status, id_dia
+                            from horario where id_medico = ? order by id_dia asc",[$id_medico]);  
+        return response()
+        ->json($horario);
     }
 }
