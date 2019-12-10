@@ -79,6 +79,7 @@
                     android:textColor="@android:color/white"
                     android:textColorHint="@android:color/white">
                 <EditText
+                    android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
@@ -105,6 +106,7 @@
                     android:textColor="@android:color/white"
                     android:textColorHint="@android:color/white">
                     <EditText
+                        android:id="@+id/password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp"
@@ -127,6 +129,7 @@
                     android:background="#5A5A5A" />
 
                 <Button
+                    android:id="@+id/signin"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginStart="30dp"
@@ -134,7 +137,6 @@
                     android:layout_marginEnd="30dp"
                     android:background="@drawable/button_login_background"
                     android:text="Acceder"
-                    android:onClick="menu"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     android:textSize="20sp"
@@ -143,54 +145,32 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:layout_gravity="center_horizontal"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="40dp">
 
-                    <Button
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginEnd="30dp"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="20dp"
-                        android:background="@drawable/facebook"
-                        android:elevation="0dp"
-                        android:textAllCaps="false"
-                        android:textColor="@android:color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                    <com.facebook.login.widget.LoginButton
+                        android:id="@+id/facebook_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="40dp"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp" />
 
-                    <Button
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginEnd="30dp"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="20dp"
-                        android:background="@drawable/twitter"
-                        android:elevation="0dp"
-                        android:textAllCaps="false"
-                        android:textColor="@android:color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                    <com.google.android.gms.common.SignInButton
+                        android:id="@+id/google_button"
+                        android:layout_width="200dp"
+                        android:layout_height="56dp"
+                        android:layout_gravity="center"/>
 
-                    <Button
-                        android:layout_width="64dp"
-                        android:layout_height="50dp"
-                        android:layout_marginEnd="30dp"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="20dp"
-                        android:background="@drawable/search"
-                        android:elevation="0dp"
-                        android:textAllCaps="false"
-                        android:textColor="@android:color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <com.github.captain_miao.optroundcardview.OptRoundCardView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="40dp"
                     app:optRoundCardCornerRadius="30dp"
                     app:optRoundCardLeftBottomCorner="false"
                     app:optRoundCardLeftTopCorner="true"
@@ -203,6 +183,7 @@
                         android:gravity="center">
 
                         <TextView
+                            android:id="@+id/register"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:clickable="true"
@@ -210,7 +191,6 @@
                             android:foreground="?android:attr/selectableItemBackground"
                             android:padding="15dp"
                             android:text="Registrarme"
-                            android:onClick="OpenSignupPage"
                             android:textColor="#191919"
                             android:textSize="25sp"
                             android:textStyle="bold" />

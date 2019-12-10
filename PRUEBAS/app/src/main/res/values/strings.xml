@@ -31,4 +31,12 @@
     <string name="prompt_email">Email</string>
     <string name="formato_fecha">dd/mm/yyyy</string>
     <string name="formato_hora">hh:mm</string>
+
+    <!-- VARIABLES DE FACEBOOK -->
+    <string name="facebook_app_id">419213542185155</string>
+    <string name="title_activity_maps">Map</string>
+
+
+    <string name="map">Médicos que se encuentran cerca</string>
+    <string name="backbtn">Regresar al Menú</string>
 </resources>

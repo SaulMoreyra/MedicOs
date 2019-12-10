@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "596327962876",
+    "firebase_url": "https://medicos-bd4c7.firebaseio.com",
+    "project_id": "medicos-bd4c7",
+    "storage_bucket": "medicos-bd4c7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596327962876:android:703a8c21db21f73a3ddf79",
+        "android_client_info": {
+          "package_name": "com.example.prueba1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "596327962876-k4497ddi6bqqatq67i8gcmuoqqicti34.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.prueba1",
+            "certificate_hash": "a9ca472add80dd09915a3d565b0e063a0c565b4e"
+          }
+        },
+        {
+          "client_id": "596327962876-rbka43slh639lfengmrc4fk7glsiuujh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbpVsAe9GcUnCS2GSzk6rWNRgHa6bPm5U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "596327962876-rbka43slh639lfengmrc4fk7glsiuujh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
