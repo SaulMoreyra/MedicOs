@@ -24,6 +24,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.Button;
 
 public class menuPrincipal extends AppCompatActivity {
 
@@ -58,6 +59,12 @@ public class menuPrincipal extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        /*findViewById(R.id.nav_cerrar_session).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logOut();
+            }
+        });*/
     }
 
     @Override
@@ -77,5 +84,10 @@ public class menuPrincipal extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+    }
+
+    public void logOut(){
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(getApplicationContext(), loginActivity2.class));
     }
 }

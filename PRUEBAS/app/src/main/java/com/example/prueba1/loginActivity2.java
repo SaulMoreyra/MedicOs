@@ -60,12 +60,12 @@ public class loginActivity2 extends AppCompatActivity {
 
     private User user;
     private FirebaseUser currentUser;
-    private SignInButton google_button = findViewById(R.id.google_button);
-    private Button signin = findViewById(R.id.signin);
-    private TextView register = findViewById(R.id.register);
-    private LoginButton facebook_button = findViewById(R.id.facebook_button);
-    private TextView email = findViewById(R.id.email) ;
-    private TextView password = findViewById(R.id.password);
+    private SignInButton google_button;
+    private Button signin;
+    private TextView register;
+    private LoginButton facebook_button;
+    private TextView email;
+    private TextView password;
 
 
     //Metodo ejecutado al iniciar la Activity
@@ -95,6 +95,12 @@ public class loginActivity2 extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         getWindow().setStatusBarColor(Color.TRANSPARENT);
         setContentView(R.layout.act_login);
+        google_button = findViewById(R.id.google_button);
+        signin = findViewById(R.id.signin);
+        register = findViewById(R.id.register);
+        facebook_button = findViewById(R.id.facebook_button);
+        email = findViewById(R.id.email);
+        password  = findViewById(R.id.password);
         googleSetUp();
         setupUI();
     }
@@ -160,7 +166,7 @@ public class loginActivity2 extends AppCompatActivity {
                             facebook_button.setEnabled(true);
                             register.setEnabled(true);
                             Log.w("ERROR", "Error al iniciar sesion", task.getException());
-                            Toast.makeText(getApplicationContext(), "Failed Init with Facebook", Toast.LENGTH_LONG).show();
+                            Toast.makeText(loginActivity2.this, "Failed Init with Facebook", Toast.LENGTH_LONG).show();
                             currentUser = null;
                             LoginManager.getInstance().logOut();
                         }
@@ -193,7 +199,7 @@ public class loginActivity2 extends AppCompatActivity {
                     register.setEnabled(true);
                     Log.w("ERROR", "signInWithCredential:failure", task.getException());
                     Toast.makeText(
-                            getApplicationContext(),
+                            loginActivity2.this,
                             "No se ha podido iniciar sesión",
                             Toast.LENGTH_LONG
                     ).show();
@@ -217,7 +223,7 @@ public class loginActivity2 extends AppCompatActivity {
                             register.setEnabled(true);
                             Log.w("ERROR", "signInWithCredential:failure", task.getException());
                             Toast.makeText(
-                                    getApplicationContext(),
+                                    loginActivity2.this,
                                     "No se ha podido iniciar sesión",
                                     Toast.LENGTH_LONG
                             ).show();
@@ -246,7 +252,7 @@ public class loginActivity2 extends AppCompatActivity {
                 google_button.setEnabled(true);
                 facebook_button.setEnabled(true);
                 register.setEnabled(true);
-                Toast.makeText(getApplicationContext(), "Google sign in failed:(", Toast.LENGTH_LONG).show();
+                Toast.makeText(loginActivity2.this, "Google sign in failed:(", Toast.LENGTH_LONG).show();
                 Log.w("ERROR", "Google sign in failed", e);
             }
         } else {
@@ -286,7 +292,7 @@ public class loginActivity2 extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), SignupActivity.class));
+                startActivity(new Intent(loginActivity2.this, SignupActivity.class));
             }
         });
     }
@@ -302,9 +308,11 @@ public class loginActivity2 extends AppCompatActivity {
                         if (!dataSnapshot.exists()) {//Si no existe el usuario en la Realtime DB, lo crea y lo almacena
                             user = new User(currentUser.getUid(),currentUser.getDisplayName(),currentUser.getEmail());
                             ref.child("users").child(user.getUserId()).setValue(user);//Referencia -> Nodo Users -> Nodo User ID -> User Object
+                            startActivity(new Intent(loginActivity2.this, menuPrincipal.class));
+
                         } else {
                             //Si ya existe el usuario, se inicia el intent del Dashboard y se culmina this
-                            startActivity(new Intent(getApplicationContext(), menuPrincipal.class));
+                            startActivity(new Intent(loginActivity2.this, menuPrincipal.class));
                             finish();
                         }
                     }
