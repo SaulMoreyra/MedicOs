@@ -77,7 +77,7 @@ public class AgendarFragment extends Fragment {
                                 JSONObject obj_dato = listaJson.getJSONObject(i);
                                 int id =obj_dato.getInt("id_medico");
                                 String c =obj_dato.getString("correo");
-                                String n =obj_dato.getString("nombre");
+                                String n =obj_dato.getString("nombre")+" ";
                                 String p1 =obj_dato.getString("primer_apellido")+" ";
                                 String p2 =obj_dato.getString("segundo_apellido")+" ";
                                 String e =obj_dato.getString("especialidad");
@@ -90,7 +90,7 @@ public class AgendarFragment extends Fragment {
                                 String r =obj_dato.getString("rfc");
                                 String cn =obj_dato.getString("contrasena");
                                 String f =obj_dato.getString("foto_perfil");
-                                listaDoctores.add(new ItemDoctor(id,c,n+p1+p2,e,ce,pro,t,cxc,r));
+                                listaDoctores.add(new ItemDoctor(id,c,n+p1+p2,e,ce,pro,t,cxc,la,lo));
                                 System.out.println("VOLLEY" );
                             }
                             historialAdaptador.notifyDataSetChanged();

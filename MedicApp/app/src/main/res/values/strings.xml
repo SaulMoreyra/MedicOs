@@ -39,7 +39,7 @@
     <!-- Strings observaciones -->
     <string name="tipo">Tipo (Pj. Alergia):</string>
     <string name="descrpcion">Descripción (Pj. Metoclopramida):</string>
-    <string name="antiguedad">Antigüedad:</string>
+    <string name="antiguedad">Antigüedad: (Pj. 2001-05-12)</string>
 
     <!-- Strings agenda médico -->
     <string name="title_activity_maps">Map</string>

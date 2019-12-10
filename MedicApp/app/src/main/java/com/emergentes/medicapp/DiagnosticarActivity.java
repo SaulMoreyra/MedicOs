@@ -20,14 +20,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DiagnosticarActivity extends AppCompatActivity {
+<<<<<<< HEAD
     RecyclerView recyclerView;
     List<Observacion> observaciones;
     ObservacionAdapter adapter;
     JSONObject dat;
+=======
+>>>>>>> c4d76166c2f7d8b5fe0074969f2c24e38d607590
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diagnosticar);
+<<<<<<< HEAD
 
 
 
@@ -42,13 +46,15 @@ public class DiagnosticarActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new ObservacionAdapter(getApplication(),getObservaciones(),2);
         recyclerView.setAdapter(adapter);
+=======
+>>>>>>> c4d76166c2f7d8b5fe0074969f2c24e38d607590
 
         Button add_obs = findViewById(R.id.btnObserv);
         add_obs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int position = (observaciones.size());
-                insertItem(position);
+                Intent i = new Intent(getApplicationContext(), ObservacionesActivity.class);
+                startActivity(i);
             }
         });
 
@@ -60,20 +66,6 @@ public class DiagnosticarActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-    }
-
-    private List<Observacion> getObservaciones() {
-        Observacion o = new Observacion(1,1,"Alergia","Abejas","1998-10-10");
-        Observacion o1 = new Observacion(1,1,"Alergia","Metoclopramida","1998-05-10");
-        //observaciones.add(o);
-        observaciones.add(o1);
-        return observaciones;
-    }
-
-    public void insertItem(int position) {
-        observaciones.add(position, new Observacion(1, 1, "","",""));
-        adapter.notifyItemInserted(position);
-
     }
 
 }
