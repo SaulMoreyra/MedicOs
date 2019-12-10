@@ -24,7 +24,8 @@ create table horario(
 	dia text,
 	hora_ingreso time,
 	hora_salida time,
-	status boolean
+	status boolean,
+	id_dia int
 );
 
 create table paciente(
