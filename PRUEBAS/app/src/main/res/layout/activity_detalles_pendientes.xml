@@ -1,9 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.pendientes.detallesPendientes">
+    android:layout_margin="8dp"
+    android:background="#ffffff"
+    android:backgroundTint="#ffffff"
+    android:orientation="vertical"
+    tools:context=".ui.pendientes.detallesPendientes"
+    tools:layout_editor_absoluteX="8dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="wrap_content"
+            android:layout_height="118dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:elevation="10dp"
+            android:src="@drawable/doctor" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/nombremedico"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+
+                android:layout_marginTop="10dp"
+                android:fontFamily="monospace"
+                android:text="20/11/2019"
+                android:textColor="@color/opt_round_card_view_dark_background"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/especialidad"
+                android:layout_width="match_parent"
+                android:layout_height="21dp"
+                android:layout_marginLeft="20dp"
+
+                android:layout_marginTop="10dp"
+                android:fontFamily="monospace"
+                android:text="20/11/2019"
+                android:textColor="@color/opt_round_card_view_dark_background"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/numero"
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:fontFamily="monospace"
+                android:text="10:28  pm"
+                android:textColor="@color/opt_round_card_view_dark_background"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_margin="20dp"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/fecha"
+            android:layout_width="171dp"
+            android:layout_height="wrap_content"
+            android:text="fecha"
+            android:textColor="@color/opt_round_card_view_dark_background"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/hora"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="hora"
+            android:textColor="@color/opt_round_card_view_dark_background"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_margin="20dp"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/costo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="costo"
+            android:textColor="@color/opt_round_card_view_dark_background"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tipo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="tipo"
+            android:textColor="@color/opt_round_card_view_dark_background"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_margin="20dp"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Paciente: "
+            android:textColor="@color/opt_round_card_view_dark_background"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/nPaciente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Jose Rios Jose"
+            android:textColor="@color/opt_round_card_view_dark_background"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+</LinearLayout>
