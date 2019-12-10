@@ -31,4 +31,5 @@
     <string name="prompt_email">Email</string>
     <string name="formato_fecha">dd/mm/yyyy</string>
     <string name="formato_hora">hh:mm</string>
+    <string name="title_activity_mapa">Map</string>
 </resources>
